@@ -1,0 +1,13 @@
+C:\Users\Junnosuke Kado\Dropbox\Baseball_Analysis\Baseball_Analysis\bin\Debug\Baseball_Analysis.exe.config
+C:\Users\Junnosuke Kado\Dropbox\Baseball_Analysis\Baseball_Analysis\bin\Debug\Baseball_Analysis.exe
+C:\Users\Junnosuke Kado\Dropbox\Baseball_Analysis\Baseball_Analysis\bin\Debug\Baseball_Analysis.pdb
+C:\Users\Junnosuke Kado\Dropbox\Baseball_Analysis\Baseball_Analysis\obj\Debug\Baseball_Analysis.csprojResolveAssemblyReference.cache
+C:\Users\Junnosuke Kado\Dropbox\Baseball_Analysis\Baseball_Analysis\obj\Debug\Baseball_Analysis.MainForm.resources
+C:\Users\Junnosuke Kado\Dropbox\Baseball_Analysis\Baseball_Analysis\obj\Debug\Baseball_Analysis.Properties.Resources.resources
+C:\Users\Junnosuke Kado\Dropbox\Baseball_Analysis\Baseball_Analysis\obj\Debug\Baseball_Analysis.TeamSelect.resources
+C:\Users\Junnosuke Kado\Dropbox\Baseball_Analysis\Baseball_Analysis\obj\Debug\Baseball_Analysis.csproj.GenerateResource.Cache
+C:\Users\Junnosuke Kado\Dropbox\Baseball_Analysis\Baseball_Analysis\obj\Debug\Baseball_Analysis.exe
+C:\Users\Junnosuke Kado\Dropbox\Baseball_Analysis\Baseball_Analysis\obj\Debug\Baseball_Analysis.pdb
+C:\Users\Junnosuke Kado\Dropbox\Baseball_Analysis\Baseball_Analysis\obj\Debug\Baseball_Analysis.Write_Score.resources
+C:\Users\Junnosuke Kado\Dropbox\Baseball_Analysis\Baseball_Analysis\obj\Debug\Baseball_Analysis.SetStartingMember.resources
+C:\Users\Junnosuke Kado\Dropbox\Baseball_Analysis\Baseball_Analysis\obj\Debug\Baseball_Analysis.AddPlayer_dialog.resources

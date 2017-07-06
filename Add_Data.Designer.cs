@@ -63,7 +63,7 @@
             this.label_runner1 = new System.Windows.Forms.Label();
             this.label_runner2 = new System.Windows.Forms.Label();
             this.label_runner3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.label_cource_height = new System.Windows.Forms.Label();
             this.comboBox_result1 = new System.Windows.Forms.ComboBox();
             this.comboBox_result2 = new System.Windows.Forms.ComboBox();
             this.textBox_speed = new System.Windows.Forms.TextBox();
@@ -320,6 +320,7 @@
             this.button1.TabIndex = 59;
             this.button1.Text = "1";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // radioButton_straight
             // 
@@ -424,14 +425,14 @@
             this.label_runner3.TabIndex = 93;
             this.label_runner3.Text = "runner 3";
             // 
-            // label4
+            // label_cource_height
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(161, 17);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 12);
-            this.label4.TabIndex = 94;
-            this.label4.Text = "label4";
+            this.label_cource_height.AutoSize = true;
+            this.label_cource_height.Location = new System.Drawing.Point(161, 17);
+            this.label_cource_height.Name = "label_cource_height";
+            this.label_cource_height.Size = new System.Drawing.Size(96, 12);
+            this.label_cource_height.TabIndex = 94;
+            this.label_cource_height.Text = "cource and height";
             // 
             // comboBox_result1
             // 
@@ -485,7 +486,7 @@
             this.Controls.Add(this.textBox_speed);
             this.Controls.Add(this.comboBox_result2);
             this.Controls.Add(this.comboBox_result1);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label_cource_height);
             this.Controls.Add(this.label_runner3);
             this.Controls.Add(this.label_runner2);
             this.Controls.Add(this.label_runner1);
@@ -565,7 +566,7 @@
         private System.Windows.Forms.Label label_runner1;
         private System.Windows.Forms.Label label_runner2;
         private System.Windows.Forms.Label label_runner3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label_cource_height;
         private System.Windows.Forms.ComboBox comboBox_result1;
         private System.Windows.Forms.ComboBox comboBox_result2;
         private System.Windows.Forms.TextBox textBox_speed;

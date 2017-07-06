@@ -46,6 +46,8 @@
             this.buck_teamselect = new System.Windows.Forms.Button();
             this.checkBox_unlockDH_teamA = new System.Windows.Forms.CheckBox();
             this.checkBox_unlockDH_teamB = new System.Windows.Forms.CheckBox();
+            this.button_read_from_fileA = new System.Windows.Forms.Button();
+            this.button_read_from_fileB = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // next_write_score
@@ -214,10 +216,32 @@
             this.checkBox_unlockDH_teamB.UseVisualStyleBackColor = true;
             this.checkBox_unlockDH_teamB.CheckedChanged += new System.EventHandler(this.checkBox_unlockDH_teamB_CheckedChanged);
             // 
+            // button_read_from_fileA
+            // 
+            this.button_read_from_fileA.Location = new System.Drawing.Point(200, 196);
+            this.button_read_from_fileA.Name = "button_read_from_fileA";
+            this.button_read_from_fileA.Size = new System.Drawing.Size(75, 23);
+            this.button_read_from_fileA.TabIndex = 24;
+            this.button_read_from_fileA.Text = "read";
+            this.button_read_from_fileA.UseVisualStyleBackColor = true;
+            this.button_read_from_fileA.Click += new System.EventHandler(this.button_read_from_fileA_Click);
+            // 
+            // button_read_from_fileB
+            // 
+            this.button_read_from_fileB.Location = new System.Drawing.Point(466, 196);
+            this.button_read_from_fileB.Name = "button_read_from_fileB";
+            this.button_read_from_fileB.Size = new System.Drawing.Size(75, 23);
+            this.button_read_from_fileB.TabIndex = 25;
+            this.button_read_from_fileB.Text = "read";
+            this.button_read_from_fileB.UseVisualStyleBackColor = true;
+            this.button_read_from_fileB.Click += new System.EventHandler(this.button_read_from_fileB_Click);
+            // 
             // SetStartingMember
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.button_read_from_fileB);
+            this.Controls.Add(this.button_read_from_fileA);
             this.Controls.Add(this.checkBox_unlockDH_teamB);
             this.Controls.Add(this.checkBox_unlockDH_teamA);
             this.Controls.Add(this.buck_teamselect);
@@ -263,5 +287,7 @@
         private System.Windows.Forms.Button buck_teamselect;
         private System.Windows.Forms.CheckBox checkBox_unlockDH_teamA;
         private System.Windows.Forms.CheckBox checkBox_unlockDH_teamB;
+        private System.Windows.Forms.Button button_read_from_fileA;
+        private System.Windows.Forms.Button button_read_from_fileB;
     }
 }

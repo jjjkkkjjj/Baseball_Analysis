@@ -377,6 +377,24 @@ namespace Baseball_Analysis
             positionview(true);
         }
 
+        private void button_read_from_fileA_Click(object sender, EventArgs e)
+        {
+            listBox_batter_teamA.Items.Clear();
+            listBox_pitcher_teamA.Items.Clear();
+            selectedpositionA.Clear();
+            teamA_mem.Clear();
+            teamA_pitcher.Clear();
+        }
+
+        private void button_read_from_fileB_Click(object sender, EventArgs e)
+        {
+            listBox_batter_teamB.Items.Clear();
+            listBox_pitcher_teamB.Items.Clear();
+            selectedpositionB.Clear();
+            teamB_mem.Clear();
+            teamB_pitcher.Clear();
+        }
+
         private void checkBox_unlockDH_teamB_CheckedChanged(object sender, EventArgs e)
         {
             listBox_batter_teamB.Items.Clear();

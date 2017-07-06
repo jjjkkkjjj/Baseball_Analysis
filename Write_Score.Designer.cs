@@ -349,6 +349,7 @@
             this.checkBox_speed.TabIndex = 59;
             this.checkBox_speed.Text = "Not measure speed";
             this.checkBox_speed.UseVisualStyleBackColor = true;
+            this.checkBox_speed.CheckedChanged += new System.EventHandler(this.checkBox_speed_CheckedChanged);
             // 
             // listView1
             // 

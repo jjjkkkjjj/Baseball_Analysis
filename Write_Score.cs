@@ -12,7 +12,7 @@ namespace Baseball_Analysis
 {
     public partial class Write_Score : UserControl
     {
-
+        public static bool speed_checked = false;
         public Write_Score()
         {
             InitializeComponent();
@@ -57,6 +57,16 @@ namespace Baseball_Analysis
             listView_mem_teamB.FullRowSelect = true;
         }
 
-        
+        private void checkBox_speed_CheckedChanged(object sender, EventArgs e)
+        {
+            if(checkBox_speed.Checked)
+            {
+                speed_checked = true;
+            }
+            else
+            {
+                speed_checked = false;
+            }
+        }
     }
 }

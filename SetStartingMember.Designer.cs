@@ -44,6 +44,8 @@
             this.button_add_teamB = new System.Windows.Forms.Button();
             this.button_delete_teamB = new System.Windows.Forms.Button();
             this.buck_teamselect = new System.Windows.Forms.Button();
+            this.checkBox_unlockDH_teamA = new System.Windows.Forms.CheckBox();
+            this.checkBox_unlockDH_teamB = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // next_write_score
@@ -190,10 +192,34 @@
             this.buck_teamselect.UseVisualStyleBackColor = true;
             this.buck_teamselect.Click += new System.EventHandler(this.buck_teamselect_Click);
             // 
+            // checkBox_unlockDH_teamA
+            // 
+            this.checkBox_unlockDH_teamA.AutoSize = true;
+            this.checkBox_unlockDH_teamA.Location = new System.Drawing.Point(74, 45);
+            this.checkBox_unlockDH_teamA.Name = "checkBox_unlockDH_teamA";
+            this.checkBox_unlockDH_teamA.Size = new System.Drawing.Size(79, 16);
+            this.checkBox_unlockDH_teamA.TabIndex = 22;
+            this.checkBox_unlockDH_teamA.Text = "Unlock DH";
+            this.checkBox_unlockDH_teamA.UseVisualStyleBackColor = true;
+            this.checkBox_unlockDH_teamA.CheckedChanged += new System.EventHandler(this.checkBox_unlockDH_teamA_CheckedChanged);
+            // 
+            // checkBox_unlockDH_teamB
+            // 
+            this.checkBox_unlockDH_teamB.AutoSize = true;
+            this.checkBox_unlockDH_teamB.Location = new System.Drawing.Point(340, 45);
+            this.checkBox_unlockDH_teamB.Name = "checkBox_unlockDH_teamB";
+            this.checkBox_unlockDH_teamB.Size = new System.Drawing.Size(79, 16);
+            this.checkBox_unlockDH_teamB.TabIndex = 23;
+            this.checkBox_unlockDH_teamB.Text = "Unlock DH";
+            this.checkBox_unlockDH_teamB.UseVisualStyleBackColor = true;
+            this.checkBox_unlockDH_teamB.CheckedChanged += new System.EventHandler(this.checkBox_unlockDH_teamB_CheckedChanged);
+            // 
             // SetStartingMember
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.checkBox_unlockDH_teamB);
+            this.Controls.Add(this.checkBox_unlockDH_teamA);
             this.Controls.Add(this.buck_teamselect);
             this.Controls.Add(this.button_delete_teamB);
             this.Controls.Add(this.button_add_teamB);
@@ -235,5 +261,7 @@
         private System.Windows.Forms.Button button_add_teamB;
         private System.Windows.Forms.Button button_delete_teamB;
         private System.Windows.Forms.Button buck_teamselect;
+        private System.Windows.Forms.CheckBox checkBox_unlockDH_teamA;
+        private System.Windows.Forms.CheckBox checkBox_unlockDH_teamB;
     }
 }

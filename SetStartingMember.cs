@@ -15,6 +15,7 @@ namespace Baseball_Analysis
         private static List<int> selectedpositionA = new List<int>(), selectedpositionB = new List<int>();
         public static List<Player> teamA_mem = new List<Player>(), teamB_mem = new List<Player>();
         public static List<Player> teamA_pitcher = new List<Player>(), teamB_pitcher = new List<Player>();
+        public static bool DH_teamA = true, DH_teamB = true;
 
         public SetStartingMember()
         {
@@ -52,6 +53,11 @@ namespace Baseball_Analysis
                         if(comboBox_position_teamA.Text != "D")
                         {
                             selectedpositionA.Add(int.Parse(comboBox_position_teamA.Text));
+                            if (!DH_teamA && comboBox_position_teamA.Text == "1")
+                            {
+                                listBox_pitcher_teamA.Items.Add("P:" + textBox_teamA.Text);
+                                selectedpositionA.Add(1);
+                            }
                         }
                         else
                         {
@@ -80,6 +86,11 @@ namespace Baseball_Analysis
                         if (comboBox_position_teamB.Text != "D")
                         {
                             selectedpositionB.Add(int.Parse(comboBox_position_teamB.Text));
+                            if (!DH_teamB && comboBox_position_teamB.Text == "1")
+                            {
+                                listBox_pitcher_teamB.Items.Add("P:" + textBox_teamB.Text);
+                                selectedpositionB.Add(1);
+                            }
                         }
                         else
                         {
@@ -320,6 +331,42 @@ namespace Baseball_Analysis
             positionview(true);
         }
 
+        private void checkBox_unlockDH_teamA_CheckedChanged(object sender, EventArgs e)
+        {
+            listBox_batter_teamA.Items.Clear();
+            listBox_pitcher_teamA.Items.Clear();
+            selectedpositionA.Clear();
+            teamA_mem.Clear();
+            teamA_pitcher.Clear();
+            if(checkBox_unlockDH_teamA.Checked)
+            {
+                DH_teamA = false;
+            }
+            else
+            {
+                DH_teamA = true;
+            }
+            positionview(true);
+        }
+
+        private void checkBox_unlockDH_teamB_CheckedChanged(object sender, EventArgs e)
+        {
+            listBox_batter_teamB.Items.Clear();
+            listBox_pitcher_teamB.Items.Clear();
+            selectedpositionB.Clear();
+            teamB_mem.Clear();
+            teamB_pitcher.Clear();
+            if (checkBox_unlockDH_teamB.Checked)
+            {
+                DH_teamB = false;
+            }
+            else
+            {
+                DH_teamB = true;
+            }
+            positionview(false);
+        }
+
         private void button_delete_teamB_Click(object sender, EventArgs e)
         {
             if (listBox_batter_teamB.SelectedItem != null)
@@ -366,13 +413,23 @@ namespace Baseball_Analysis
             {
                 comboBox_position_teamA.Items.Clear();
                 comboBox_position_teamA.Text = "";
-                if(!selectedpositionA.Contains(0))
+                if(DH_teamA)
                 {
-                    comboBox_position_teamA.Items.Add("D");
+                    if (!selectedpositionA.Contains(0))
+                    {
+                        comboBox_position_teamA.Items.Add("D");
+                    }
+                    if (!selectedpositionA.Contains(1))
+                    {
+                        comboBox_position_teamA.Items.Add("P");
+                    }
                 }
-                if (!selectedpositionA.Contains(1))
+                else
                 {
-                    comboBox_position_teamA.Items.Add("P");
+                    if (!selectedpositionA.Contains(1))
+                    {
+                        comboBox_position_teamA.Items.Add("1");
+                    }
                 }
                 for (int i = 2; i <= 9; i++)
                 {
@@ -387,13 +444,23 @@ namespace Baseball_Analysis
             {
                 comboBox_position_teamB.Items.Clear();
                 comboBox_position_teamB.Text = "";
-                if (!selectedpositionB.Contains(0))
+                if (DH_teamB)
                 {
-                    comboBox_position_teamB.Items.Add("D");
+                    if (!selectedpositionB.Contains(0))
+                    {
+                        comboBox_position_teamB.Items.Add("D");
+                    }
+                    if (!selectedpositionB.Contains(1))
+                    {
+                        comboBox_position_teamB.Items.Add("P");
+                    }
                 }
-                if (!selectedpositionB.Contains(1))
+                else
                 {
-                    comboBox_position_teamB.Items.Add("P");
+                    if (!selectedpositionB.Contains(1))
+                    {
+                        comboBox_position_teamB.Items.Add("1");
+                    }
                 }
                 for (int i = 2; i <= 9; i++)
                 {

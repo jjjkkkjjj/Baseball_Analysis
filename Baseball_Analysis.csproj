@@ -53,6 +53,12 @@
     <Compile Include="AddPlayer_dialog.Designer.cs">
       <DependentUpon>AddPlayer_dialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Add_Data.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Add_Data.Designer.cs">
+      <DependentUpon>Add_Data.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +87,9 @@
     </Compile>
     <EmbeddedResource Include="AddPlayer_dialog.resx">
       <DependentUpon>AddPlayer_dialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Add_Data.resx">
+      <DependentUpon>Add_Data.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

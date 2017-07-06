@@ -55,8 +55,7 @@ namespace Baseball_Analysis
                             selectedpositionA.Add(int.Parse(comboBox_position_teamA.Text));
                             if (!DH_teamA && comboBox_position_teamA.Text == "1")
                             {
-                                listBox_pitcher_teamA.Items.Add("P:" + textBox_teamA.Text);
-                                selectedpositionA.Add(1);
+                                listBox_pitcher_teamA.Items.Add("P:" + textBox_teamA.Text);                                
                             }
                         }
                         else
@@ -88,8 +87,7 @@ namespace Baseball_Analysis
                             selectedpositionB.Add(int.Parse(comboBox_position_teamB.Text));
                             if (!DH_teamB && comboBox_position_teamB.Text == "1")
                             {
-                                listBox_pitcher_teamB.Items.Add("P:" + textBox_teamB.Text);
-                                selectedpositionB.Add(1);
+                                listBox_pitcher_teamB.Items.Add("P:" + textBox_teamB.Text);    
                             }
                         }
                         else
@@ -145,6 +143,10 @@ namespace Baseball_Analysis
                         if(position != "P")
                         {
                             teamA_mem.Add(TMP);
+                            if(position == "1")
+                            {
+                                teamA_pitcher.Add(TMP);
+                            }
                         }
                         else
                         {
@@ -188,6 +190,10 @@ namespace Baseball_Analysis
                                     if (position != "P")
                                     {
                                         teamA_mem.Add(TMP);
+                                        if (position == "1")
+                                        {
+                                            teamA_pitcher.Add(TMP);
+                                        }
                                     }
                                     else
                                     {
@@ -207,9 +213,9 @@ namespace Baseball_Analysis
             }
             else
             {
-                if (!System.IO.Directory.Exists(filepathA))
+                if (!System.IO.Directory.Exists(filepathB))
                 {
-                    System.IO.Directory.CreateDirectory(filepathA);
+                    System.IO.Directory.CreateDirectory(filepathB);
                 }
                 try
                 {
@@ -239,6 +245,10 @@ namespace Baseball_Analysis
                         if (position != "P")
                         {
                             teamB_mem.Add(TMP);
+                            if (position == "1")
+                            {
+                                teamB_pitcher.Add(TMP);
+                            }
                         }
                         else
                         {
@@ -281,6 +291,10 @@ namespace Baseball_Analysis
                                     if (position != "P")
                                     {
                                         teamB_mem.Add(TMP);
+                                        if (position == "1")
+                                        {
+                                            teamB_pitcher.Add(TMP);
+                                        }
                                     }
                                     else
                                     {
@@ -310,6 +324,11 @@ namespace Baseball_Analysis
                 if (tmp != "D")
                 {
                     selectedpositionA.Remove(int.Parse(tmp));
+                    if(tmp == "1" && !DH_teamA)
+                    {
+                        listBox_pitcher_teamA.Items.RemoveAt(0);
+                        teamA_pitcher.RemoveAt(0);
+                    }
                 }
                 else
                 {
@@ -327,6 +346,15 @@ namespace Baseball_Analysis
 
                 selectedpositionA.Remove(1);
                 teamA_pitcher.RemoveAt(0);
+                if(!DH_teamA)
+                {
+                    int sel_tmp = listBox_batter_teamA.FindString("1:");
+                    if(sel_tmp != -1)
+                    {
+                        listBox_batter_teamA.Items.RemoveAt(sel_tmp);
+                        teamA_mem.RemoveAt(sel_tmp);
+                    }
+                }
             }
             positionview(true);
         }
@@ -376,6 +404,11 @@ namespace Baseball_Analysis
                 if (tmp != "D")
                 {
                     selectedpositionB.Remove(int.Parse(tmp));
+                    if (tmp == "1" && !DH_teamB)
+                    {
+                        listBox_pitcher_teamB.Items.RemoveAt(0);
+                        teamB_pitcher.RemoveAt(0);
+                    }
                 }
                 else
                 {
@@ -395,6 +428,15 @@ namespace Baseball_Analysis
                 selectedpositionB.Remove(1);
 
                 teamB_pitcher.RemoveAt(0);
+                if (!DH_teamB)
+                {
+                    int sel_tmp = listBox_batter_teamB.FindString("1:");
+                    if (sel_tmp != -1)
+                    {
+                        listBox_batter_teamB.Items.RemoveAt(sel_tmp);
+                        teamB_mem.RemoveAt(sel_tmp);
+                    }
+                }
             }
             positionview(false);
         }

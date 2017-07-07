@@ -48,6 +48,8 @@
             this.checkBox_unlockDH_teamB = new System.Windows.Forms.CheckBox();
             this.button_read_from_fileA = new System.Windows.Forms.Button();
             this.button_read_from_fileB = new System.Windows.Forms.Button();
+            this.button_delete_pA = new System.Windows.Forms.Button();
+            this.button_delete_pB = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // next_write_score
@@ -156,7 +158,7 @@
             // 
             // button_delete_teamA
             // 
-            this.button_delete_teamA.Location = new System.Drawing.Point(149, 146);
+            this.button_delete_teamA.Location = new System.Drawing.Point(23, 196);
             this.button_delete_teamA.Name = "button_delete_teamA";
             this.button_delete_teamA.Size = new System.Drawing.Size(45, 23);
             this.button_delete_teamA.TabIndex = 18;
@@ -176,7 +178,7 @@
             // 
             // button_delete_teamB
             // 
-            this.button_delete_teamB.Location = new System.Drawing.Point(415, 146);
+            this.button_delete_teamB.Location = new System.Drawing.Point(289, 196);
             this.button_delete_teamB.Name = "button_delete_teamB";
             this.button_delete_teamB.Size = new System.Drawing.Size(45, 23);
             this.button_delete_teamB.TabIndex = 20;
@@ -218,7 +220,7 @@
             // 
             // button_read_from_fileA
             // 
-            this.button_read_from_fileA.Location = new System.Drawing.Point(200, 196);
+            this.button_read_from_fileA.Location = new System.Drawing.Point(119, 146);
             this.button_read_from_fileA.Name = "button_read_from_fileA";
             this.button_read_from_fileA.Size = new System.Drawing.Size(75, 23);
             this.button_read_from_fileA.TabIndex = 24;
@@ -228,7 +230,7 @@
             // 
             // button_read_from_fileB
             // 
-            this.button_read_from_fileB.Location = new System.Drawing.Point(466, 196);
+            this.button_read_from_fileB.Location = new System.Drawing.Point(385, 146);
             this.button_read_from_fileB.Name = "button_read_from_fileB";
             this.button_read_from_fileB.Size = new System.Drawing.Size(75, 23);
             this.button_read_from_fileB.TabIndex = 25;
@@ -236,10 +238,32 @@
             this.button_read_from_fileB.UseVisualStyleBackColor = true;
             this.button_read_from_fileB.Click += new System.EventHandler(this.button_read_from_fileB_Click);
             // 
+            // button_delete_pA
+            // 
+            this.button_delete_pA.Location = new System.Drawing.Point(23, 288);
+            this.button_delete_pA.Name = "button_delete_pA";
+            this.button_delete_pA.Size = new System.Drawing.Size(45, 23);
+            this.button_delete_pA.TabIndex = 26;
+            this.button_delete_pA.Text = "Del";
+            this.button_delete_pA.UseVisualStyleBackColor = true;
+            this.button_delete_pA.Click += new System.EventHandler(this.button_delete_pA_Click);
+            // 
+            // button_delete_pB
+            // 
+            this.button_delete_pB.Location = new System.Drawing.Point(289, 288);
+            this.button_delete_pB.Name = "button_delete_pB";
+            this.button_delete_pB.Size = new System.Drawing.Size(45, 23);
+            this.button_delete_pB.TabIndex = 27;
+            this.button_delete_pB.Text = "Del";
+            this.button_delete_pB.UseVisualStyleBackColor = true;
+            this.button_delete_pB.Click += new System.EventHandler(this.button_delete_pB_Click);
+            // 
             // SetStartingMember
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.button_delete_pB);
+            this.Controls.Add(this.button_delete_pA);
             this.Controls.Add(this.button_read_from_fileB);
             this.Controls.Add(this.button_read_from_fileA);
             this.Controls.Add(this.checkBox_unlockDH_teamB);
@@ -289,5 +313,7 @@
         private System.Windows.Forms.CheckBox checkBox_unlockDH_teamB;
         private System.Windows.Forms.Button button_read_from_fileA;
         private System.Windows.Forms.Button button_read_from_fileB;
+        private System.Windows.Forms.Button button_delete_pA;
+        private System.Windows.Forms.Button button_delete_pB;
     }
 }

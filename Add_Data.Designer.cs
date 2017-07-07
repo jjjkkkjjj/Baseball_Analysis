@@ -69,6 +69,7 @@
             this.textBox_speed = new System.Windows.Forms.TextBox();
             this.label_kmperh = new System.Windows.Forms.Label();
             this.button_add = new System.Windows.Forms.Button();
+            this.button_cancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button25
@@ -332,6 +333,7 @@
             this.radioButton_straight.TabStop = true;
             this.radioButton_straight.Text = "↑";
             this.radioButton_straight.UseVisualStyleBackColor = true;
+            this.radioButton_straight.CheckedChanged += new System.EventHandler(this.radioButton_straight_CheckedChanged);
             // 
             // radioButton_left
             // 
@@ -344,6 +346,7 @@
             this.radioButton_left.TabStop = true;
             this.radioButton_left.Text = "←";
             this.radioButton_left.UseVisualStyleBackColor = true;
+            this.radioButton_left.CheckedChanged += new System.EventHandler(this.radioButton_left_CheckedChanged);
             // 
             // radioButton_leftdown
             // 
@@ -356,6 +359,7 @@
             this.radioButton_leftdown.TabStop = true;
             this.radioButton_leftdown.Text = "↙";
             this.radioButton_leftdown.UseVisualStyleBackColor = true;
+            this.radioButton_leftdown.CheckedChanged += new System.EventHandler(this.radioButton_leftdown_CheckedChanged);
             // 
             // radioButton_right
             // 
@@ -367,6 +371,7 @@
             this.radioButton_right.TabStop = true;
             this.radioButton_right.Text = "→";
             this.radioButton_right.UseVisualStyleBackColor = true;
+            this.radioButton_right.CheckedChanged += new System.EventHandler(this.radioButton_right_CheckedChanged);
             // 
             // radioButton_down
             // 
@@ -378,6 +383,7 @@
             this.radioButton_down.TabStop = true;
             this.radioButton_down.Text = "↓";
             this.radioButton_down.UseVisualStyleBackColor = true;
+            this.radioButton_down.CheckedChanged += new System.EventHandler(this.radioButton_down_CheckedChanged);
             // 
             // radioButton_rightdown
             // 
@@ -389,6 +395,7 @@
             this.radioButton_rightdown.TabStop = true;
             this.radioButton_rightdown.Text = "↘";
             this.radioButton_rightdown.UseVisualStyleBackColor = true;
+            this.radioButton_rightdown.CheckedChanged += new System.EventHandler(this.radioButton_rightdown_CheckedChanged);
             // 
             // comboBox_pitch
             // 
@@ -469,18 +476,29 @@
             // button_add
             // 
             this.button_add.DialogResult = System.Windows.Forms.DialogResult.Yes;
-            this.button_add.Location = new System.Drawing.Point(404, 258);
+            this.button_add.Location = new System.Drawing.Point(349, 257);
             this.button_add.Name = "button_add";
             this.button_add.Size = new System.Drawing.Size(75, 23);
             this.button_add.TabIndex = 99;
             this.button_add.Text = "Add";
             this.button_add.UseVisualStyleBackColor = true;
             // 
+            // button_cancel
+            // 
+            this.button_cancel.DialogResult = System.Windows.Forms.DialogResult.No;
+            this.button_cancel.Location = new System.Drawing.Point(437, 257);
+            this.button_cancel.Name = "button_cancel";
+            this.button_cancel.Size = new System.Drawing.Size(75, 23);
+            this.button_cancel.TabIndex = 100;
+            this.button_cancel.Text = "Cancel";
+            this.button_cancel.UseVisualStyleBackColor = true;
+            // 
             // Add_Data
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(516, 305);
+            this.Controls.Add(this.button_cancel);
             this.Controls.Add(this.button_add);
             this.Controls.Add(this.label_kmperh);
             this.Controls.Add(this.textBox_speed);
@@ -572,5 +590,6 @@
         private System.Windows.Forms.TextBox textBox_speed;
         private System.Windows.Forms.Label label_kmperh;
         private System.Windows.Forms.Button button_add;
+        private System.Windows.Forms.Button button_cancel;
     }
 }

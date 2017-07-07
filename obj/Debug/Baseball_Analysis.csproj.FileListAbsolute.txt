@@ -11,3 +11,4 @@ C:\Users\Junnosuke Kado\Dropbox\Baseball_Analysis\Baseball_Analysis\obj\Debug\Ba
 C:\Users\Junnosuke Kado\Dropbox\Baseball_Analysis\Baseball_Analysis\obj\Debug\Baseball_Analysis.Write_Score.resources
 C:\Users\Junnosuke Kado\Dropbox\Baseball_Analysis\Baseball_Analysis\obj\Debug\Baseball_Analysis.SetStartingMember.resources
 C:\Users\Junnosuke Kado\Dropbox\Baseball_Analysis\Baseball_Analysis\obj\Debug\Baseball_Analysis.AddPlayer_dialog.resources
+C:\Users\Junnosuke Kado\Dropbox\Baseball_Analysis\Baseball_Analysis\obj\Debug\Baseball_Analysis.Add_Data.resources

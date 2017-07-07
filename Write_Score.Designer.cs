@@ -60,7 +60,9 @@
             this.listView_mem_teamA = new System.Windows.Forms.ListView();
             this.listView_mem_teamB = new System.Windows.Forms.ListView();
             this.checkBox_speed = new System.Windows.Forms.CheckBox();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.listView_pitch_log = new System.Windows.Forms.ListView();
+            this.button_add_Pinfo = new System.Windows.Forms.Button();
+            this.button_delete_Pinfo = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // count_ball
@@ -282,7 +284,7 @@
             // label_teamB
             // 
             this.label_teamB.AutoSize = true;
-            this.label_teamB.Location = new System.Drawing.Point(444, 128);
+            this.label_teamB.Location = new System.Drawing.Point(412, 128);
             this.label_teamB.Name = "label_teamB";
             this.label_teamB.Size = new System.Drawing.Size(38, 12);
             this.label_teamB.TabIndex = 25;
@@ -300,7 +302,7 @@
             // label_BorP_teamB
             // 
             this.label_BorP_teamB.AutoSize = true;
-            this.label_BorP_teamB.Location = new System.Drawing.Point(391, 160);
+            this.label_BorP_teamB.Location = new System.Drawing.Point(359, 160);
             this.label_BorP_teamB.Name = "label_BorP_teamB";
             this.label_BorP_teamB.Size = new System.Drawing.Size(41, 12);
             this.label_BorP_teamB.TabIndex = 28;
@@ -318,7 +320,7 @@
             // label_name_teamB
             // 
             this.label_name_teamB.AutoSize = true;
-            this.label_name_teamB.Location = new System.Drawing.Point(444, 160);
+            this.label_name_teamB.Location = new System.Drawing.Point(412, 160);
             this.label_name_teamB.Name = "label_name_teamB";
             this.label_name_teamB.Size = new System.Drawing.Size(32, 12);
             this.label_name_teamB.TabIndex = 31;
@@ -328,15 +330,15 @@
             // 
             this.listView_mem_teamA.Location = new System.Drawing.Point(47, 187);
             this.listView_mem_teamA.Name = "listView_mem_teamA";
-            this.listView_mem_teamA.Size = new System.Drawing.Size(123, 151);
+            this.listView_mem_teamA.Size = new System.Drawing.Size(154, 151);
             this.listView_mem_teamA.TabIndex = 32;
             this.listView_mem_teamA.UseCompatibleStateImageBehavior = false;
             // 
             // listView_mem_teamB
             // 
-            this.listView_mem_teamB.Location = new System.Drawing.Point(446, 187);
+            this.listView_mem_teamB.Location = new System.Drawing.Point(414, 187);
             this.listView_mem_teamB.Name = "listView_mem_teamB";
-            this.listView_mem_teamB.Size = new System.Drawing.Size(121, 151);
+            this.listView_mem_teamB.Size = new System.Drawing.Size(154, 151);
             this.listView_mem_teamB.TabIndex = 33;
             this.listView_mem_teamB.UseCompatibleStateImageBehavior = false;
             // 
@@ -351,19 +353,40 @@
             this.checkBox_speed.UseVisualStyleBackColor = true;
             this.checkBox_speed.CheckedChanged += new System.EventHandler(this.checkBox_speed_CheckedChanged);
             // 
-            // listView1
+            // listView_pitch_log
             // 
-            this.listView1.Location = new System.Drawing.Point(226, 241);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(121, 97);
-            this.listView1.TabIndex = 60;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView_pitch_log.Location = new System.Drawing.Point(226, 241);
+            this.listView_pitch_log.Name = "listView_pitch_log";
+            this.listView_pitch_log.Size = new System.Drawing.Size(121, 97);
+            this.listView_pitch_log.TabIndex = 60;
+            this.listView_pitch_log.UseCompatibleStateImageBehavior = false;
+            // 
+            // button_add_Pinfo
+            // 
+            this.button_add_Pinfo.Location = new System.Drawing.Point(226, 212);
+            this.button_add_Pinfo.Name = "button_add_Pinfo";
+            this.button_add_Pinfo.Size = new System.Drawing.Size(43, 23);
+            this.button_add_Pinfo.TabIndex = 61;
+            this.button_add_Pinfo.Text = "Add";
+            this.button_add_Pinfo.UseVisualStyleBackColor = true;
+            this.button_add_Pinfo.Click += new System.EventHandler(this.button_add_Pinfo_Click);
+            // 
+            // button_delete_Pinfo
+            // 
+            this.button_delete_Pinfo.Location = new System.Drawing.Point(304, 212);
+            this.button_delete_Pinfo.Name = "button_delete_Pinfo";
+            this.button_delete_Pinfo.Size = new System.Drawing.Size(43, 23);
+            this.button_delete_Pinfo.TabIndex = 62;
+            this.button_delete_Pinfo.Text = "Del";
+            this.button_delete_Pinfo.UseVisualStyleBackColor = true;
             // 
             // Write_Score
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.button_delete_Pinfo);
+            this.Controls.Add(this.button_add_Pinfo);
+            this.Controls.Add(this.listView_pitch_log);
             this.Controls.Add(this.checkBox_speed);
             this.Controls.Add(this.listView_mem_teamB);
             this.Controls.Add(this.listView_mem_teamA);
@@ -436,6 +459,8 @@
         private System.Windows.Forms.ListView listView_mem_teamA;
         private System.Windows.Forms.ListView listView_mem_teamB;
         private System.Windows.Forms.CheckBox checkBox_speed;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView listView_pitch_log;
+        private System.Windows.Forms.Button button_add_Pinfo;
+        private System.Windows.Forms.Button button_delete_Pinfo;
     }
 }

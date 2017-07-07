@@ -13,6 +13,8 @@ namespace Baseball_Analysis
     public partial class Write_Score : UserControl
     {
         public static bool speed_checked = false;
+        public static int countS = 0, countB = 0, countO = 0;
+
         public Write_Score()
         {
             InitializeComponent();
@@ -46,15 +48,25 @@ namespace Baseball_Analysis
                 SetStartingMember.teamA_mem[i].view_Donated_Pitch(),SetStartingMember.teamA_mem[i].view_Donated_Bat()};
                 listView_mem_teamA.Items.Add(new ListViewItem(tmp));
             }
+            string[] tmp_pA = { SetStartingMember.teamA_pitcher[0].position, SetStartingMember.teamA_pitcher[0].name, SetStartingMember.teamA_pitcher[0].bucknumber.ToString(),
+                SetStartingMember.teamA_pitcher[0].view_Donated_Pitch(),SetStartingMember.teamA_pitcher[0].view_Donated_Bat()};
+            listView_mem_teamA.Items.Add(new ListViewItem(tmp_pA));
+
             for (int i = 0; i < SetStartingMember.teamB_mem.Count; i++)
             {
                 string[] tmp = { SetStartingMember.teamB_mem[i].position, SetStartingMember.teamB_mem[i].name, SetStartingMember.teamB_mem[i].bucknumber.ToString(),
                 SetStartingMember.teamB_mem[i].view_Donated_Pitch(),SetStartingMember.teamB_mem[i].view_Donated_Bat()};
                 listView_mem_teamB.Items.Add(new ListViewItem(tmp));
             }
+            string[] tmp_pB = { SetStartingMember.teamB_pitcher[0].position, SetStartingMember.teamB_pitcher[0].name, SetStartingMember.teamB_pitcher[0].bucknumber.ToString(),
+                SetStartingMember.teamB_pitcher[0].view_Donated_Pitch(),SetStartingMember.teamB_pitcher[0].view_Donated_Bat()};
+            listView_mem_teamB.Items.Add(new ListViewItem(tmp_pB));
 
             listView_mem_teamA.FullRowSelect = true;
             listView_mem_teamB.FullRowSelect = true;
+
+            listView_mem_teamA.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            listView_mem_teamB.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
         }
 
         private void checkBox_speed_CheckedChanged(object sender, EventArgs e)
@@ -66,6 +78,15 @@ namespace Baseball_Analysis
             else
             {
                 speed_checked = false;
+            }
+        }
+
+        private void button_add_Pinfo_Click(object sender, EventArgs e)
+        {
+            Add_Data add_data = new Add_Data();
+            if (add_data.ShowDialog() == DialogResult.Yes)
+            {
+
             }
         }
     }

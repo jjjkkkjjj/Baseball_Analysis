@@ -21,6 +21,7 @@ namespace Baseball_Analysis
             rightdown,
             right,
         }
+        private static string[] result1 = { "ボール", "ストライク", "未投球" };
         private static string[] Straight = { "ストレート" };
         private static string[] Left_ = { "シュート" };
         private static string[] LeftDown = { "シンカー" };
@@ -42,47 +43,50 @@ namespace Baseball_Analysis
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            button_click_CH(1);
         }
+        
+    
 
         private void view_comboBox_pitch(pitch_direction PD)
         {
+            comboBox_pitch.Items.Clear();
             switch (PD)
             {
                 case pitch_direction.straight:
                     for(int i = 0; i < Straight.Count(); i++)
                     {
-                        comboBox_pitch.Text = Straight[i];
+                        comboBox_pitch.Items.Add(Straight[i]);
                     }
                     break;
                 case pitch_direction.left:
                     for (int i = 0; i < Left_.Count(); i++)
                     {
-                        comboBox_pitch.Text = Left_[i];
+                        comboBox_pitch.Items.Add(Left_[i]);
                     }
                     break;
                 case pitch_direction.leftdown:
                     for (int i = 0; i < LeftDown.Count(); i++)
                     {
-                        comboBox_pitch.Text = LeftDown[i];
+                        comboBox_pitch.Items.Add(LeftDown[i]);
                     }
                     break;
                 case pitch_direction.down:
                     for (int i = 0; i < Down.Count(); i++)
                     {
-                        comboBox_pitch.Text = Down[i];
+                        comboBox_pitch.Items.Add(Down[i]);
                     }
                     break;
                 case pitch_direction.rightdown:
                     for (int i = 0; i < RightDown.Count(); i++)
                     {
-                        comboBox_pitch.Text = RightDown[i];
+                        comboBox_pitch.Items.Add(RightDown[i]);
                     }
                     break;
                 case pitch_direction.right:
                     for (int i = 0; i < Right_.Count(); i++)
                     {
-                        comboBox_pitch.Text = Right_[i];
+                        comboBox_pitch.Items.Add(Right_[i]);
                     }
                     break;
             }
@@ -91,9 +95,54 @@ namespace Baseball_Analysis
         {
             label_cource_height.Text = num.ToString();
             comboBox_result1.Items.Clear();
-            comboBox_result1.Items.Add("B");
-            comboBox_result1.Items.Add("S");
-            comboBox_result1.Items.Add("F");
+            for(int i = 0; i < result1.Count(); i++)
+            {
+                comboBox_result1.Items.Add(result1[i]);
+            }
         }
+
+        private void radioButton_straight_CheckedChanged(object sender, EventArgs e)
+        {
+            if(radioButton_straight.Checked)
+            {
+                view_comboBox_pitch(pitch_direction.straight);
+            }
+        }
+        private void radioButton_left_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton_left.Checked)
+            {
+                view_comboBox_pitch(pitch_direction.left);
+            }
+        }
+        private void radioButton_leftdown_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton_leftdown.Checked)
+            {
+                view_comboBox_pitch(pitch_direction.leftdown);
+            }
+        }
+        private void radioButton_down_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton_down.Checked)
+            {
+                view_comboBox_pitch(pitch_direction.down);
+            }
+        }
+        private void radioButton_rightdown_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton_rightdown.Checked)
+            {
+                view_comboBox_pitch(pitch_direction.rightdown);
+            }
+        }
+        private void radioButton_right_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton_right.Checked)
+            {
+                view_comboBox_pitch(pitch_direction.right);
+            }
+        }
+
     }
 }

@@ -546,9 +546,9 @@
             this.label_cource_height_C.AutoSize = true;
             this.label_cource_height_C.Location = new System.Drawing.Point(208, 21);
             this.label_cource_height_C.Name = "label_cource_height_C";
-            this.label_cource_height_C.Size = new System.Drawing.Size(78, 12);
+            this.label_cource_height_C.Size = new System.Drawing.Size(96, 12);
             this.label_cource_height_C.TabIndex = 103;
-            this.label_cource_height_C.Text = "cource & height";
+            this.label_cource_height_C.Text = "cource and height";
             // 
             // comboBox_direction
             // 

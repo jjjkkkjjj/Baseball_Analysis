@@ -17,7 +17,7 @@ namespace Baseball_Analysis
         public static int pitch_batter = 0, pitch_all = 0;
         public static int cource_height = 1;
 
-        public static string[] pitch_data = { "P(b)", "P(a)", "T", "S", "R", "C" };
+        public static string[] pitch_data = { "P(b)", "P(a)", "T", "S", "R", "C", "N" };
 
         public Write_Score()
         {
@@ -54,6 +54,7 @@ namespace Baseball_Analysis
             listView_pitch_log.Columns.Add("Speed");
             listView_pitch_log.Columns.Add("Result");
             listView_pitch_log.Columns.Add("BSO");
+            listView_pitch_log.Columns.Add("CHnum");
 
             for (int i = 0; i < SetStartingMember.teamA_mem.Count; i++)
             {
@@ -85,6 +86,21 @@ namespace Baseball_Analysis
             dataGridView_cource_height.ColumnCount = 5;
             dataGridView_cource_height.RowCount = 5;
             dataGridView_cource_height.ReadOnly = true;
+            for(int i = 0; i < 5; i++)
+            {
+                for(int j = 0; j < 5; j++)
+                {
+                    dataGridView_cource_height[i, j].Style.BackColor = Color.LightGreen;
+                }
+            }
+            for (int i = 1; i <= 3; i++)
+            {
+                for (int j = 1; j <= 3; j++)
+                {
+                    dataGridView_cource_height[i, j].Style.BackColor = Color.Yellow;
+                }
+            }
+            dataGridView_cource_height.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
 
         private void checkBox_speed_CheckedChanged(object sender, EventArgs e)
@@ -99,17 +115,60 @@ namespace Baseball_Analysis
             }
         }
 
+        private void button_delete_Pinfo_Click(object sender, EventArgs e)
+        {
+            int itemnum = listView_pitch_log.Items.Count;
+            if (itemnum != 0)
+            {
+                ListViewItem Tmp = listView_pitch_log.Items[itemnum - 1];
+                if (itemnum != 1)
+                {
+                    ListViewItem tmp = listView_pitch_log.Items[itemnum - 2];
+                    string bso = tmp.SubItems[5].Text;
+                    countB = int.Parse(bso[0].ToString());
+                    countS = int.Parse(bso[1].ToString());
+                    countO = int.Parse(bso[2].ToString());
+                }
+                else
+                {
+                    countB = 0;
+                    countS = 0;
+                    countO = 0;
+                }
+                listView_pitch_log.Items.RemoveAt(itemnum - 1);
+                
+                view_count();
+
+                int CHnum = int.Parse(Tmp.SubItems[6].Text.ToString());
+                string A = dataGridView_cource_height[return_heightnum(CHnum), return_courcenum(CHnum)].Value.ToString();
+                if(pitch_batter < 10)
+                {
+                    A = A.Remove(A.Length - 2);
+                }
+                else
+                {
+                    A = A.Remove(A.Length - 3);
+                }
+                
+                dataGridView_cource_height[return_heightnum(CHnum), return_courcenum(CHnum)].Value = A;
+                dataGridView_cource_height.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
+                pitch_all--;
+                pitch_batter--;
+            }           
+            
+        }
+
         private void button_add_Pinfo_Click(object sender, EventArgs e)
         {
             Add_Data add_data = new Add_Data();
             if (add_data.ShowDialog() == DialogResult.Yes)
             {
-                label_ball.Text = countB.ToString();
-                label_strike.Text = countS.ToString();
-                label_out.Text = countO.ToString();
+                view_count();
 
                 listView_pitch_log.Items.Add(new ListViewItem(pitch_data));
-                dataGridView_cource_height[return_heightnum(cource_height), return_courcenum(cource_height)].Value = pitch_data[0];
+                dataGridView_cource_height[return_heightnum(cource_height), return_courcenum(cource_height)].Value += pitch_data[0];
+                dataGridView_cource_height.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             }
         }
 
@@ -144,6 +203,13 @@ namespace Baseball_Analysis
                 tmp++;
             }
             return column;
+        }
+
+        private void view_count()
+        {
+            label_ball.Text = countB.ToString();
+            label_strike.Text = countS.ToString();
+            label_out.Text = countO.ToString();
         }
     }
 }

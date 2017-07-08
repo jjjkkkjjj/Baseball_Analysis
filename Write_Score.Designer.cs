@@ -383,12 +383,13 @@
             // 
             // button_delete_Pinfo
             // 
-            this.button_delete_Pinfo.Location = new System.Drawing.Point(447, 88);
+            this.button_delete_Pinfo.Location = new System.Drawing.Point(433, 89);
             this.button_delete_Pinfo.Name = "button_delete_Pinfo";
-            this.button_delete_Pinfo.Size = new System.Drawing.Size(43, 23);
+            this.button_delete_Pinfo.Size = new System.Drawing.Size(57, 23);
             this.button_delete_Pinfo.TabIndex = 62;
-            this.button_delete_Pinfo.Text = "Del";
+            this.button_delete_Pinfo.Text = "Last Del";
             this.button_delete_Pinfo.UseVisualStyleBackColor = true;
+            this.button_delete_Pinfo.Click += new System.EventHandler(this.button_delete_Pinfo_Click);
             // 
             // button_next
             // 

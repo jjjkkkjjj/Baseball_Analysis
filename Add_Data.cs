@@ -21,13 +21,24 @@ namespace Baseball_Analysis
             rightdown,
             right,
         }
-        private static string[] result1 = { "ボール", "ストライク", "未投球" };
-        private static string[] Straight = { "ストレート" };
+        private static int button_click_num = 0;
+        private static int nB = 0, nS = 0, nO = 0;
+
+        private static string[] result1 = { "ボール", "見逃し", "空振り", "ファール", "凡打", 
+            "犠牲", "安打・出塁", "未投球" };
+        private static string[] direction = { "投", "捕", "一", "二", "三", "遊", "左", "中", "右" };
+        private static string[] result2_bonda = { "ゴロ", "フライ", "ライナー", "ファールフライ" };
+        private static string[] result2_syuturui = { "ヒット", "2ベース", "3ベース", "HR", "エラー",
+            "死球", "Fc", "ELSE"};
+
+        private static string[] Straight = { "ストレート", "2シーム" };
         private static string[] Left_ = { "シュート" };
         private static string[] LeftDown = { "シンカー" };
-        private static string[] Down = { "チェンジアップ" };
+        private static string[] Down = { "チェンジアップ", "フォーク", "縦スライダー", "パーム", "ナックル" };
         private static string[] RightDown = { "カーブ" };
-        private static string[] Right_ = { "スライダー" };
+        private static string[] Right_ = { "スライダー", "カットボール" };
+        private static string[] Direction_fig = { "↑", "←", "↙", "↓", "↘", "→" };
+        private static int Direction_fig_id = 0;
 
         public Add_Data()
         {
@@ -35,18 +46,116 @@ namespace Baseball_Analysis
 
             if(Write_Score.speed_checked)
             {
-                textBox_speed.ReadOnly = true;
+                textBox_speed.Enabled = false;
             }
             radioButton_straight.Checked = true;
             view_comboBox_pitch(pitch_direction.straight);
+            nB = Write_Score.countB;
+            nS = Write_Score.countS;
+            nO = Write_Score.countO;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             button_click_CH(1);
         }
-        
-    
+        private void button2_Click(object sender, EventArgs e)
+        {
+            button_click_CH(2);
+        }
+        private void button3_Click(object sender, EventArgs e)
+        {
+            button_click_CH(3);
+        }
+        private void button4_Click(object sender, EventArgs e)
+        {
+            button_click_CH(4);
+        }
+        private void button5_Click(object sender, EventArgs e)
+        {
+            button_click_CH(5);
+        }
+        private void button6_Click(object sender, EventArgs e)
+        {
+            button_click_CH(6);
+        }
+        private void button7_Click(object sender, EventArgs e)
+        {
+            button_click_CH(7);
+        }
+        private void button8_Click(object sender, EventArgs e)
+        {
+            button_click_CH(8);
+        }
+        private void button9_Click(object sender, EventArgs e)
+        {
+            button_click_CH(9);
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            button_click_CH(10);
+        }
+        private void button11_Click(object sender, EventArgs e)
+        {
+            button_click_CH(11);
+        }
+        private void button12_Click(object sender, EventArgs e)
+        {
+            button_click_CH(12);
+        }
+        private void button13_Click(object sender, EventArgs e)
+        {
+            button_click_CH(13);
+        }
+        private void button14_Click(object sender, EventArgs e)
+        {
+            button_click_CH(14);
+        }
+        private void button15_Click(object sender, EventArgs e)
+        {
+            button_click_CH(15);
+        }
+        private void button16_Click(object sender, EventArgs e)
+        {
+            button_click_CH(16);
+        }
+        private void button17_Click(object sender, EventArgs e)
+        {
+            button_click_CH(17);
+        }
+        private void button18_Click(object sender, EventArgs e)
+        {
+            button_click_CH(18);
+        }
+        private void button19_Click(object sender, EventArgs e)
+        {
+            button_click_CH(19);
+        }
+        private void button20_Click(object sender, EventArgs e)
+        {
+            button_click_CH(20);
+        }
+        private void button21_Click(object sender, EventArgs e)
+        {
+            button_click_CH(21);
+        }
+        private void button22_Click(object sender, EventArgs e)
+        {
+            button_click_CH(22);
+        }
+        private void button23_Click(object sender, EventArgs e)
+        {
+            button_click_CH(23);
+        }
+        private void button24_Click(object sender, EventArgs e)
+        {
+            button_click_CH(24);
+        }
+        private void button25_Click(object sender, EventArgs e)
+        {
+            button_click_CH(25);
+        }
 
         private void view_comboBox_pitch(pitch_direction PD)
         {
@@ -93,12 +202,23 @@ namespace Baseball_Analysis
         }
         private void button_click_CH(int num)
         {
-            label_cource_height.Text = num.ToString();
-            comboBox_result1.Items.Clear();
-            for(int i = 0; i < result1.Count(); i++)
+            if(button_click_num == 0)
             {
-                comboBox_result1.Items.Add(result1[i]);
+                label_cource_height_C.Text = num.ToString();
+                button_click_num += 1;
             }
+            else
+            {
+                label_cource_height_P.Text = num.ToString();
+                comboBox_result1.Items.Clear();
+                for (int i = 0; i < result1.Count(); i++)
+                {
+                    comboBox_result1.Items.Add(result1[i]);
+                }
+
+                button_click_num = 0;
+            }
+            
         }
 
         private void radioButton_straight_CheckedChanged(object sender, EventArgs e)
@@ -106,6 +226,7 @@ namespace Baseball_Analysis
             if(radioButton_straight.Checked)
             {
                 view_comboBox_pitch(pitch_direction.straight);
+                Direction_fig_id = 0;
             }
         }
         private void radioButton_left_CheckedChanged(object sender, EventArgs e)
@@ -113,6 +234,7 @@ namespace Baseball_Analysis
             if (radioButton_left.Checked)
             {
                 view_comboBox_pitch(pitch_direction.left);
+                Direction_fig_id = 1;
             }
         }
         private void radioButton_leftdown_CheckedChanged(object sender, EventArgs e)
@@ -120,6 +242,7 @@ namespace Baseball_Analysis
             if (radioButton_leftdown.Checked)
             {
                 view_comboBox_pitch(pitch_direction.leftdown);
+                Direction_fig_id = 2;
             }
         }
         private void radioButton_down_CheckedChanged(object sender, EventArgs e)
@@ -127,6 +250,7 @@ namespace Baseball_Analysis
             if (radioButton_down.Checked)
             {
                 view_comboBox_pitch(pitch_direction.down);
+                Direction_fig_id = 3;
             }
         }
         private void radioButton_rightdown_CheckedChanged(object sender, EventArgs e)
@@ -134,6 +258,7 @@ namespace Baseball_Analysis
             if (radioButton_rightdown.Checked)
             {
                 view_comboBox_pitch(pitch_direction.rightdown);
+                Direction_fig_id = 4;
             }
         }
         private void radioButton_right_CheckedChanged(object sender, EventArgs e)
@@ -141,8 +266,122 @@ namespace Baseball_Analysis
             if (radioButton_right.Checked)
             {
                 view_comboBox_pitch(pitch_direction.right);
+                Direction_fig_id = 5;
             }
         }
 
+        private void button_add_Click(object sender, EventArgs e)
+        {
+            Write_Score.countB = nB;
+            Write_Score.countS = nS;
+            Write_Score.countO = nO;
+            Write_Score.pitch_all++;
+            Write_Score.pitch_batter++;
+
+            Write_Score.pitch_data[0] = Direction_fig[Direction_fig_id] + Write_Score.pitch_batter.ToString();
+            Write_Score.pitch_data[1] = Write_Score.pitch_all.ToString();
+            Write_Score.pitch_data[2] = comboBox_pitch.Text;
+            if(textBox_speed.Enabled)
+            {
+                Write_Score.pitch_data[3] = textBox_speed.Text;
+            }
+            else
+            {
+                Write_Score.pitch_data[3] = "-";
+            }
+            Write_Score.pitch_data[4] = comboBox_result1.Text;
+            Write_Score.pitch_data[5] = nB.ToString() + nS.ToString() + nO.ToString();
+
+        }
+
+        
+
+        private void comboBox_result1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            nB = Write_Score.countB;
+            nS = Write_Score.countS;
+            nO = Write_Score.countO;
+            comboBox_direction.Enabled = true;
+            comboBox_result2.Enabled = true;
+            if (comboBox_result1.Text == "ボール")
+            {
+                if (nB != 3)
+                {
+                    nB++;
+                    comboBox_direction.Enabled = false;
+                    comboBox_result2.Enabled = false;
+                }
+                else
+                {
+                    comboBox_result2.Text = "四球";
+                    comboBox_result2.Items.Add("四球");
+                    nB++;
+                }
+            }
+            else if (comboBox_result1.Text == "見逃し" || comboBox_result1.Text == "空振り")
+            {
+                if (nS != 2)
+                {
+                    nS++;
+                    comboBox_direction.Enabled = false;
+                    comboBox_result2.Enabled = false;
+                }
+                else
+                {
+                    comboBox_result2.Text = "三振";
+                    comboBox_result2.Items.Add("三振");
+                    nS++;
+                    nO++;
+                }
+            }
+            else if (comboBox_result1.Text == "ファール")
+            {
+                if(nS !=2)
+                {
+                    nS++;
+                }
+                comboBox_direction.Enabled = false;
+                comboBox_result2.Enabled = false;
+            }
+            else if (comboBox_result1.Text == "凡打")
+            {
+                nO++;
+                comboBox_direction.Items.Clear();
+                comboBox_result2.Items.Clear();
+                for (int i = 0; i < direction.Count(); i++)
+                {
+                    comboBox_direction.Items.Add(direction[i]);
+                }
+                for(int i = 0; i < result2_bonda.Count(); i++)
+                {
+                    comboBox_result2.Items.Add(result2_bonda[i]);
+                }
+            }
+            else if (comboBox_result1.Text == "犠牲")
+            {
+                nO++;
+                comboBox_direction.Items.Clear();
+                comboBox_result2.Items.Clear();
+                for (int i = 0; i < direction.Count(); i++)
+                {
+                    comboBox_direction.Items.Add(direction[i]);
+                }
+                comboBox_result2.Items.Add("バント");
+                comboBox_result2.Items.Add("フライ");
+            }
+            else if (comboBox_result1.Text == "安打・出塁")
+            {
+                comboBox_direction.Items.Clear();
+                comboBox_result2.Items.Clear();
+                for (int i = 0; i < direction.Count(); i++)
+                {
+                    comboBox_direction.Items.Add(direction[i]);
+                }
+                for (int i = 0; i < result2_syuturui.Count(); i++)
+                {
+                    comboBox_result2.Items.Add(result2_syuturui[i]);
+                }
+            }
+        }
     }
 }

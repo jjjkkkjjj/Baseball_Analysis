@@ -14,6 +14,9 @@ namespace Baseball_Analysis
     {
         public static bool speed_checked = false;
         public static int countS = 0, countB = 0, countO = 0;
+        public static int pitch_batter = 0, pitch_all = 0;
+
+        public static string[] pitch_data = { "P(b)", "P(a)", "T", "S", "R", "C" };
 
         public Write_Score()
         {
@@ -30,6 +33,8 @@ namespace Baseball_Analysis
             listView_mem_teamA.View = View.Details;
             listView_mem_teamB.View = View.Details;
 
+            listView_pitch_log.View = View.Details;
+
             //カラムの設定
             listView_mem_teamA.Columns.Add("Position");
             listView_mem_teamA.Columns.Add("name");
@@ -41,6 +46,13 @@ namespace Baseball_Analysis
             listView_mem_teamB.Columns.Add("#");
             listView_mem_teamB.Columns.Add("Pitch");
             listView_mem_teamB.Columns.Add("Bat");
+
+            listView_pitch_log.Columns.Add("Pitch(batter)");
+            listView_pitch_log.Columns.Add("Pitch(all)");
+            listView_pitch_log.Columns.Add("Type");
+            listView_pitch_log.Columns.Add("Speed");
+            listView_pitch_log.Columns.Add("Result");
+            listView_pitch_log.Columns.Add("BSO");
 
             for (int i = 0; i < SetStartingMember.teamA_mem.Count; i++)
             {
@@ -64,9 +76,11 @@ namespace Baseball_Analysis
 
             listView_mem_teamA.FullRowSelect = true;
             listView_mem_teamB.FullRowSelect = true;
+            listView_pitch_log.FullRowSelect = true;
 
             listView_mem_teamA.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             listView_mem_teamB.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            listView_pitch_log.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
         }
 
         private void checkBox_speed_CheckedChanged(object sender, EventArgs e)
@@ -86,7 +100,11 @@ namespace Baseball_Analysis
             Add_Data add_data = new Add_Data();
             if (add_data.ShowDialog() == DialogResult.Yes)
             {
+                label_ball.Text = countB.ToString();
+                label_strike.Text = countS.ToString();
+                label_out.Text = countO.ToString();
 
+                listView_pitch_log.Items.Add(new ListViewItem(pitch_data));
             }
         }
     }

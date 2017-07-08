@@ -63,6 +63,8 @@
             this.listView_pitch_log = new System.Windows.Forms.ListView();
             this.button_add_Pinfo = new System.Windows.Forms.Button();
             this.button_delete_Pinfo = new System.Windows.Forms.Button();
+            this.button_next = new System.Windows.Forms.Button();
+            this.button_buck = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // count_ball
@@ -380,10 +382,30 @@
             this.button_delete_Pinfo.Text = "Del";
             this.button_delete_Pinfo.UseVisualStyleBackColor = true;
             // 
+            // button_next
+            // 
+            this.button_next.Location = new System.Drawing.Point(493, 90);
+            this.button_next.Name = "button_next";
+            this.button_next.Size = new System.Drawing.Size(75, 23);
+            this.button_next.TabIndex = 63;
+            this.button_next.Text = "next";
+            this.button_next.UseVisualStyleBackColor = true;
+            // 
+            // button_buck
+            // 
+            this.button_buck.Location = new System.Drawing.Point(412, 90);
+            this.button_buck.Name = "button_buck";
+            this.button_buck.Size = new System.Drawing.Size(75, 23);
+            this.button_buck.TabIndex = 64;
+            this.button_buck.Text = "buck";
+            this.button_buck.UseVisualStyleBackColor = true;
+            // 
             // Write_Score
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.button_buck);
+            this.Controls.Add(this.button_next);
             this.Controls.Add(this.button_delete_Pinfo);
             this.Controls.Add(this.button_add_Pinfo);
             this.Controls.Add(this.listView_pitch_log);
@@ -462,5 +484,7 @@
         private System.Windows.Forms.ListView listView_pitch_log;
         private System.Windows.Forms.Button button_add_Pinfo;
         private System.Windows.Forms.Button button_delete_Pinfo;
+        private System.Windows.Forms.Button button_next;
+        private System.Windows.Forms.Button button_buck;
     }
 }

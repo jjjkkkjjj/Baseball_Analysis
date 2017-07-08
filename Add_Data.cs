@@ -292,6 +292,7 @@ namespace Baseball_Analysis
             Write_Score.pitch_data[4] = comboBox_result1.Text;
             Write_Score.pitch_data[5] = nB.ToString() + nS.ToString() + nO.ToString();
 
+            Write_Score.cource_height = int.Parse(label_cource_height_P.Text);
         }
 
         

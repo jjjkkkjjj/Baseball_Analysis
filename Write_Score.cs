@@ -15,6 +15,7 @@ namespace Baseball_Analysis
         public static bool speed_checked = false;
         public static int countS = 0, countB = 0, countO = 0;
         public static int pitch_batter = 0, pitch_all = 0;
+        public static int cource_height = 1;
 
         public static string[] pitch_data = { "P(b)", "P(a)", "T", "S", "R", "C" };
 
@@ -47,7 +48,7 @@ namespace Baseball_Analysis
             listView_mem_teamB.Columns.Add("Pitch");
             listView_mem_teamB.Columns.Add("Bat");
 
-            listView_pitch_log.Columns.Add("Pitch(batter)");
+            listView_pitch_log.Columns.Add("Pitch(bater)");
             listView_pitch_log.Columns.Add("Pitch(all)");
             listView_pitch_log.Columns.Add("Type");
             listView_pitch_log.Columns.Add("Speed");
@@ -80,7 +81,10 @@ namespace Baseball_Analysis
 
             listView_mem_teamA.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             listView_mem_teamB.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
-            listView_pitch_log.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+
+            dataGridView_cource_height.ColumnCount = 5;
+            dataGridView_cource_height.RowCount = 5;
+            dataGridView_cource_height.ReadOnly = true;
         }
 
         private void checkBox_speed_CheckedChanged(object sender, EventArgs e)
@@ -105,7 +109,41 @@ namespace Baseball_Analysis
                 label_out.Text = countO.ToString();
 
                 listView_pitch_log.Items.Add(new ListViewItem(pitch_data));
+                dataGridView_cource_height[return_heightnum(cource_height), return_courcenum(cource_height)].Value = pitch_data[0];
             }
+        }
+
+        private int return_courcenum(int i)
+        {
+            int[,] cor = new int[,] { { 10, 11, 12, 13, 14 }, { 15, 1, 2, 3, 16 }, { 17, 4, 5, 6, 18 }, { 19, 7, 8, 9, 20 }, { 21, 22, 23, 24, 25 } };
+            int tmp = 0;
+            int row = 0;
+            while(tmp<25)
+            {
+                if(cor[tmp/5,tmp%5] == i)
+                {
+                    row = tmp / 5;
+                    break;
+                }
+                tmp++;
+            }
+            return row;
+        }
+        private int return_heightnum(int i)
+        {
+            int[,] cor = new int[,] { { 10, 11, 12, 13, 14 }, { 15, 1, 2, 3, 16 }, { 17, 4, 5, 6, 18 }, { 19, 7, 8, 9, 20 }, { 21, 22, 23, 24, 25 } };
+            int tmp = 0;
+            int column = 0;
+            while (tmp < 25)
+            {
+                if (cor[tmp / 5, tmp % 5] == i)
+                {
+                    column = tmp % 5;
+                    break;
+                }
+                tmp++;
+            }
+            return column;
         }
     }
 }

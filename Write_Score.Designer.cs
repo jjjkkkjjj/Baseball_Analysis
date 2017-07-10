@@ -69,6 +69,11 @@
             this.tabPage_member = new System.Windows.Forms.TabPage();
             this.tabPage_add_pitchinfo = new System.Windows.Forms.TabPage();
             this.dataGridView_cource_height = new System.Windows.Forms.DataGridView();
+            this.label_BorP_teamA_add = new System.Windows.Forms.Label();
+            this.label_name_teamA_add = new System.Windows.Forms.Label();
+            this.label_BorP_teamB_add = new System.Windows.Forms.Label();
+            this.label_name_teamB_add = new System.Windows.Forms.Label();
+            this.label_result = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage_member.SuspendLayout();
             this.tabPage_add_pitchinfo.SuspendLayout();
@@ -399,6 +404,7 @@
             this.button_next.TabIndex = 63;
             this.button_next.Text = "next";
             this.button_next.UseVisualStyleBackColor = true;
+            this.button_next.Click += new System.EventHandler(this.button_next_Click);
             // 
             // button_buck
             // 
@@ -439,6 +445,10 @@
             // 
             // tabPage_add_pitchinfo
             // 
+            this.tabPage_add_pitchinfo.Controls.Add(this.label_name_teamB_add);
+            this.tabPage_add_pitchinfo.Controls.Add(this.label_BorP_teamB_add);
+            this.tabPage_add_pitchinfo.Controls.Add(this.label_name_teamA_add);
+            this.tabPage_add_pitchinfo.Controls.Add(this.label_BorP_teamA_add);
             this.tabPage_add_pitchinfo.Controls.Add(this.dataGridView_cource_height);
             this.tabPage_add_pitchinfo.Controls.Add(this.checkBox_speed);
             this.tabPage_add_pitchinfo.Controls.Add(this.listView_pitch_log);
@@ -461,10 +471,56 @@
             this.dataGridView_cource_height.Size = new System.Drawing.Size(188, 142);
             this.dataGridView_cource_height.TabIndex = 63;
             // 
+            // label_BorP_teamA_add
+            // 
+            this.label_BorP_teamA_add.AutoSize = true;
+            this.label_BorP_teamA_add.Location = new System.Drawing.Point(23, 61);
+            this.label_BorP_teamA_add.Name = "label_BorP_teamA_add";
+            this.label_BorP_teamA_add.Size = new System.Drawing.Size(37, 12);
+            this.label_BorP_teamA_add.TabIndex = 64;
+            this.label_BorP_teamA_add.Text = "Batter";
+            // 
+            // label_name_teamA_add
+            // 
+            this.label_name_teamA_add.AutoSize = true;
+            this.label_name_teamA_add.Location = new System.Drawing.Point(94, 61);
+            this.label_name_teamA_add.Name = "label_name_teamA_add";
+            this.label_name_teamA_add.Size = new System.Drawing.Size(32, 12);
+            this.label_name_teamA_add.TabIndex = 65;
+            this.label_name_teamA_add.Text = "name";
+            // 
+            // label_BorP_teamB_add
+            // 
+            this.label_BorP_teamB_add.AutoSize = true;
+            this.label_BorP_teamB_add.Location = new System.Drawing.Point(449, 61);
+            this.label_BorP_teamB_add.Name = "label_BorP_teamB_add";
+            this.label_BorP_teamB_add.Size = new System.Drawing.Size(41, 12);
+            this.label_BorP_teamB_add.TabIndex = 66;
+            this.label_BorP_teamB_add.Text = "Pitcher";
+            // 
+            // label_name_teamB_add
+            // 
+            this.label_name_teamB_add.AutoSize = true;
+            this.label_name_teamB_add.Location = new System.Drawing.Point(519, 61);
+            this.label_name_teamB_add.Name = "label_name_teamB_add";
+            this.label_name_teamB_add.Size = new System.Drawing.Size(32, 12);
+            this.label_name_teamB_add.TabIndex = 67;
+            this.label_name_teamB_add.Text = "name";
+            // 
+            // label_result
+            // 
+            this.label_result.AutoSize = true;
+            this.label_result.Location = new System.Drawing.Point(279, 86);
+            this.label_result.Name = "label_result";
+            this.label_result.Size = new System.Drawing.Size(38, 12);
+            this.label_result.TabIndex = 66;
+            this.label_result.Text = "Result";
+            // 
             // Write_Score
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label_result);
             this.Controls.Add(this.button_buck);
             this.Controls.Add(this.button_next);
             this.Controls.Add(this.Team_Second);
@@ -546,5 +602,10 @@
         private System.Windows.Forms.TabPage tabPage_member;
         private System.Windows.Forms.TabPage tabPage_add_pitchinfo;
         private System.Windows.Forms.DataGridView dataGridView_cource_height;
+        private System.Windows.Forms.Label label_name_teamB_add;
+        private System.Windows.Forms.Label label_BorP_teamB_add;
+        private System.Windows.Forms.Label label_name_teamA_add;
+        private System.Windows.Forms.Label label_BorP_teamA_add;
+        private System.Windows.Forms.Label label_result;
     }
 }

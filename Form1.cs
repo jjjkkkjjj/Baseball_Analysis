@@ -107,9 +107,59 @@ namespace Baseball_Analysis
             this.filepath = FILEPATH;
         }
 
-        public void file_output()
+        public void file_output_detail(string opponent_team ,string opponent_name, string[] data, string result)//B=true
         {
+            try
+            {
+                string FilePath = filepath + "\\" + name + "_detail.csv";
+                using (var sr = new System.IO.StreamWriter(@FilePath, true, System.Text.Encoding.GetEncoding("shift_jis")))
+                {
+                    sr.Write(opponent_team + ",");
+                    sr.Write(opponent_name + ",");
+                    for (int i = 0; i < data.Count(); i++)
+                    {
+                        sr.Write(data[i] + ",");
+                    }
+                    if(result != "")
+                    {
+                        sr.Write(result + ",");
+                    }
 
+                    sr.Write("\n");
+                }
+                
+            }
+            catch (System.Exception err)
+            {
+
+            }
+        }
+
+        public void file_output_visualize(string opponent_team, string opponent_name, List<string> data, string result)//B=true
+        {
+            try
+            {
+                string FilePath = filepath + "\\" + name + "_visualize.csv";
+                using (var sr = new System.IO.StreamWriter(@FilePath, true, System.Text.Encoding.GetEncoding("shift_jis")))
+                {
+                    sr.Write(opponent_team + "," + opponent_name + "," + result + ",");
+                    int tmp = 0;
+                    while (tmp < data.Count())
+                    {
+                        for (int i = 0; i < 5; i++)
+                        {
+                            sr.Write(data[tmp] + ",");
+                            tmp++;
+                        }
+                        sr.Write("\n");
+                    }
+                }
+
+            }
+            catch (System.Exception err)
+            {
+
+            }
         }
 
         static Donate stringToDonate(string a)

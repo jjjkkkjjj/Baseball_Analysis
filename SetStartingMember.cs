@@ -107,8 +107,10 @@ namespace Baseball_Analysis
 
         static bool readplayer(string name, bool AorB, string position)//true:A,false:B
         {
-            string filepathA = TeamSelect.FILEPATH_TEAMA + "PLAYER";
-            string filepathB = TeamSelect.FILEPATH_TEAMB + "PLAYER";
+            string filepathA = TeamSelect.FILEPATH_TEAMA + "PLAYER\\" + name;
+            string filepathB = TeamSelect.FILEPATH_TEAMB + "PLAYER\\" + name;
+            string FilepathA = filepathA + "\\" + name + ".csv";
+            string FilepathB = filepathB + "\\" + name + ".csv";
             if (AorB)
             {
                 if (!System.IO.Directory.Exists(filepathA))
@@ -117,9 +119,8 @@ namespace Baseball_Analysis
                 }
                 try
                 {
-                    filepathA += "\\" + name + ".csv";
                     // csvファイルを開く
-                    using (var sr = new System.IO.StreamReader(@filepathA, System.Text.Encoding.GetEncoding("shift_jis")))
+                    using (var sr = new System.IO.StreamReader(@FilepathA, System.Text.Encoding.GetEncoding("shift_jis")))
                     {
                         string tmp_name, tmp_bucknumber, tmp_PD, tmp_BD;
                         var line = sr.ReadLine();
@@ -173,7 +174,7 @@ namespace Baseball_Analysis
                         {
                             try
                             {
-                                using (var sr = new System.IO.StreamWriter(@filepathA, false, System.Text.Encoding.GetEncoding("shift_jis")))
+                                using (var sr = new System.IO.StreamWriter(@FilepathA, false, System.Text.Encoding.GetEncoding("shift_jis")))
                                 {
                                     string tmp_name, tmp_bucknumber, tmp_PD, tmp_BD;
                                     tmp_name = name;
@@ -221,9 +222,8 @@ namespace Baseball_Analysis
                 }
                 try
                 {
-                    filepathB += "\\" + name + ".csv";
                     // csvファイルを開く
-                    using (var sr = new System.IO.StreamReader(@filepathB, System.Text.Encoding.GetEncoding("shift_jis")))
+                    using (var sr = new System.IO.StreamReader(@FilepathB, System.Text.Encoding.GetEncoding("shift_jis")))
                     {
                         string tmp_name, tmp_bucknumber, tmp_PD, tmp_BD;
                         var line = sr.ReadLine();
@@ -276,7 +276,7 @@ namespace Baseball_Analysis
                         {
                             try
                             {
-                                using (var sr = new System.IO.StreamWriter(@filepathB, false, System.Text.Encoding.GetEncoding("shift_jis")))
+                                using (var sr = new System.IO.StreamWriter(@FilepathB, false, System.Text.Encoding.GetEncoding("shift_jis")))
                                 {
                                     string tmp_name, tmp_bucknumber, tmp_PD, tmp_BD;
                                     tmp_name = name;

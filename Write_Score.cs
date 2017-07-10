@@ -15,9 +15,13 @@ namespace Baseball_Analysis
         public static bool speed_checked = false;
         public static int countS = 0, countB = 0, countO = 0;
         public static int pitch_batter = 0, pitch_all = 0;
+        public static int teamA_bat_num = 0, teamB_bat_num = 0;
         public static int cource_height = 1;
-
         public static string[] pitch_data = { "P(b)", "P(a)", "T", "S", "R", "C", "N" };
+        public static bool countup = false;
+        public static string RESULT = "";
+
+        private static bool attackA = true;
 
         public Write_Score()
         {
@@ -30,6 +34,8 @@ namespace Baseball_Analysis
 
             label_name_teamA.Text = SetStartingMember.teamA_mem[0].name;
             label_name_teamB.Text = SetStartingMember.teamB_pitcher[0].name;
+            label_name_teamA_add.Text = SetStartingMember.teamA_mem[0].name;
+            label_name_teamB_add.Text = SetStartingMember.teamB_pitcher[0].name;
 
             listView_mem_teamA.View = View.Details;
             listView_mem_teamB.View = View.Details;
@@ -86,7 +92,8 @@ namespace Baseball_Analysis
             dataGridView_cource_height.ColumnCount = 5;
             dataGridView_cource_height.RowCount = 5;
             dataGridView_cource_height.ReadOnly = true;
-            for(int i = 0; i < 5; i++)
+            
+            for (int i = 0; i < 5; i++)
             {
                 for(int j = 0; j < 5; j++)
                 {
@@ -169,8 +176,94 @@ namespace Baseball_Analysis
                 listView_pitch_log.Items.Add(new ListViewItem(pitch_data));
                 dataGridView_cource_height[return_heightnum(cource_height), return_courcenum(cource_height)].Value += pitch_data[0];
                 dataGridView_cource_height.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
+                if(!countup)
+                {
+                    label_result.Text = pitch_data[4];
+                }
+                else
+                {
+                    label_result.Text = RESULT;
+                }
             }
         }
+
+        private void button_next_Click(object sender, EventArgs e)
+        {
+            if (listView_pitch_log.Items.Count != 0)
+            {
+                string[] tmp = { "P(b)", "P(a)", "T", "S", "R", "C", "N" };
+                for (int i = 0; i < listView_pitch_log.Items.Count; i++)
+                {
+                    ListViewItem TMP = listView_pitch_log.Items[i];
+                    for (int j = 0; j < tmp.Count(); j++)
+                    {
+                        tmp[j] = TMP.SubItems[j].Text;
+                    }
+
+                    string result = "";
+                    if (i == listView_pitch_log.Items.Count - 1)
+                    {
+                        result = RESULT;
+                    }
+                    if (attackA)
+                    { 
+                        SetStartingMember.teamA_mem[teamA_bat_num].file_output_detail(
+                        TeamSelect.first_teamname, SetStartingMember.teamB_pitcher[0].name, tmp, result);
+                    }
+                    else
+                    {
+                        SetStartingMember.teamB_mem[teamB_bat_num].file_output_detail(
+                        TeamSelect.second_teamname, SetStartingMember.teamA_pitcher[0].name, tmp, result);
+                    }
+
+                }
+                if(attackA)
+                {
+                    List<string> A = new List<string>();
+                    for(int i = 0; i < 5; i++)
+                    {
+                        for (int j = 0; j < 5; j++)
+                        {
+                            string fdsfs = dataGridView_cource_height[i, j].Value.ToString();
+                            A.Add(fdsfs);
+                        }
+                    }
+                    SetStartingMember.teamA_mem[teamA_bat_num].file_output_visualize(
+                        TeamSelect.first_teamname, SetStartingMember.teamB_pitcher[0].name, A, RESULT);
+
+                    teamA_bat_num++;
+                    if (teamA_bat_num == 9)
+                    {
+                        teamA_bat_num = 0;
+                    }
+                }
+                else
+                {
+                    List<string> B = new List<string>();
+                    for (int i = 0; i < 5; i++)
+                    {
+                        for (int j = 0; j < 5; j++)
+                        {
+                            B.Add(dataGridView_cource_height[i, j].Value.ToString());
+                        }
+                    }
+                    SetStartingMember.teamB_mem[teamB_bat_num].file_output_visualize(
+                        TeamSelect.first_teamname, SetStartingMember.teamA_pitcher[0].name, B, RESULT);
+
+                    teamB_bat_num++;
+                    if (teamB_bat_num == 9)
+                    {
+                        teamB_bat_num = 0;
+                    }
+                }
+
+                countup = false;
+                RESULT = "";                
+            }
+            view_label();
+        }
+    
 
         private int return_courcenum(int i)
         {
@@ -210,6 +303,32 @@ namespace Baseball_Analysis
             label_ball.Text = countB.ToString();
             label_strike.Text = countS.ToString();
             label_out.Text = countO.ToString();
+        }
+
+        private void view_label()
+        {
+            if(attackA)
+            {
+                label_BorP_teamA.Text = "Batter";
+                label_BorP_teamB.Text = "Pitcher";
+                label_BorP_teamA_add.Text = "Batter";
+                label_BorP_teamB_add.Text = "Pitcher";
+                label_name_teamA.Text = SetStartingMember.teamA_mem[teamA_bat_num].name;
+                label_name_teamB.Text = SetStartingMember.teamB_pitcher[0].name;
+                label_name_teamA_add.Text = SetStartingMember.teamA_mem[teamA_bat_num].name;
+                label_name_teamB_add.Text = SetStartingMember.teamB_pitcher[0].name;
+            }
+            else
+            {
+                label_BorP_teamB.Text = "Batter";
+                label_BorP_teamA.Text = "Pitcher";
+                label_BorP_teamB_add.Text = "Batter";
+                label_BorP_teamA_add.Text = "Pitcher";
+                label_name_teamB.Text = SetStartingMember.teamB_mem[teamB_bat_num].name;
+                label_name_teamA.Text = SetStartingMember.teamA_pitcher[0].name;
+                label_name_teamB_add.Text = SetStartingMember.teamB_mem[teamB_bat_num].name;
+                label_name_teamA_add.Text = SetStartingMember.teamA_pitcher[0].name;
+            }
         }
     }
 }

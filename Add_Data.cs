@@ -53,6 +53,8 @@ namespace Baseball_Analysis
             nB = Write_Score.countB;
             nS = Write_Score.countS;
             nO = Write_Score.countO;
+
+            Write_Score.countup = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -290,13 +292,16 @@ namespace Baseball_Analysis
                 Write_Score.pitch_data[3] = "-";
             }
             Write_Score.pitch_data[4] = comboBox_result1.Text;
-            Write_Score.pitch_data[5] = nB.ToString() + nS.ToString() + nO.ToString();
+            Write_Score.pitch_data[5] = nB.ToString() + "|" + nS.ToString() + "|" + nO.ToString();
             Write_Score.pitch_data[6] = label_cource_height_P.Text;
 
             Write_Score.cource_height = int.Parse(label_cource_height_P.Text);
-        }
 
-        
+            if(Write_Score.countup)
+            {
+                Write_Score.RESULT = comboBox_result2.Text;
+            }
+        }        
 
         private void comboBox_result1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -305,6 +310,8 @@ namespace Baseball_Analysis
             nO = Write_Score.countO;
             comboBox_direction.Enabled = true;
             comboBox_result2.Enabled = true;
+            Write_Score.countup = false;
+
             if (comboBox_result1.Text == "ボール")
             {
                 if (nB != 3)
@@ -358,6 +365,8 @@ namespace Baseball_Analysis
                 {
                     comboBox_result2.Items.Add(result2_bonda[i]);
                 }
+
+                Write_Score.countup = true;
             }
             else if (comboBox_result1.Text == "犠牲")
             {
@@ -370,6 +379,8 @@ namespace Baseball_Analysis
                 }
                 comboBox_result2.Items.Add("バント");
                 comboBox_result2.Items.Add("フライ");
+
+                Write_Score.countup = true;
             }
             else if (comboBox_result1.Text == "安打・出塁")
             {
@@ -383,6 +394,8 @@ namespace Baseball_Analysis
                 {
                     comboBox_result2.Items.Add(result2_syuturui[i]);
                 }
+
+                Write_Score.countup = true;
             }
         }
     }

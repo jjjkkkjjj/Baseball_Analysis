@@ -382,10 +382,10 @@
             this.radioButton_leftdown.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.radioButton_leftdown.Location = new System.Drawing.Point(20, 207);
             this.radioButton_leftdown.Name = "radioButton_leftdown";
-            this.radioButton_leftdown.Size = new System.Drawing.Size(31, 16);
+            this.radioButton_leftdown.Size = new System.Drawing.Size(35, 16);
             this.radioButton_leftdown.TabIndex = 86;
             this.radioButton_leftdown.TabStop = true;
-            this.radioButton_leftdown.Text = "↙";
+            this.radioButton_leftdown.Text = "△";
             this.radioButton_leftdown.UseVisualStyleBackColor = true;
             this.radioButton_leftdown.CheckedChanged += new System.EventHandler(this.radioButton_leftdown_CheckedChanged);
             // 
@@ -418,10 +418,10 @@
             this.radioButton_rightdown.AutoSize = true;
             this.radioButton_rightdown.Location = new System.Drawing.Point(80, 207);
             this.radioButton_rightdown.Name = "radioButton_rightdown";
-            this.radioButton_rightdown.Size = new System.Drawing.Size(31, 16);
+            this.radioButton_rightdown.Size = new System.Drawing.Size(35, 16);
             this.radioButton_rightdown.TabIndex = 89;
             this.radioButton_rightdown.TabStop = true;
-            this.radioButton_rightdown.Text = "↘";
+            this.radioButton_rightdown.Text = "▲";
             this.radioButton_rightdown.UseVisualStyleBackColor = true;
             this.radioButton_rightdown.CheckedChanged += new System.EventHandler(this.radioButton_rightdown_CheckedChanged);
             // 

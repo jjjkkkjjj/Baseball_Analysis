@@ -10,7 +10,8 @@ using System.Windows.Forms;
 
 namespace Baseball_Analysis
 {
-    public partial class Add_Data : Form
+    public partial class Add_Data 
+        : Form
     {
         private enum pitch_direction
         {
@@ -37,8 +38,9 @@ namespace Baseball_Analysis
         private static string[] Down = { "チェンジアップ", "フォーク", "縦スライダー", "パーム", "ナックル" };
         private static string[] RightDown = { "カーブ" };
         private static string[] Right_ = { "スライダー", "カットボール" };
-        private static string[] Direction_fig = { "↑", "←", "↙", "↓", "↘", "→" };
+        private static string[] Direction_fig = { "↑", "←", "△", "↓", "▲", "→" };
         private static int Direction_fig_id = 0;
+        private static bool Lefty = false;
 
         public Add_Data()
         {
@@ -53,6 +55,25 @@ namespace Baseball_Analysis
             nB = Write_Score.countB;
             nS = Write_Score.countS;
             nO = Write_Score.countO;
+
+            if(Write_Score.attackA)
+            {
+               if( SetStartingMember.teamB_pitcher[0].view_Donated_Pitch() == "L")
+                {
+                    Lefty = true;
+                    radioButton_leftdown.Text = Direction_fig[4];
+                    radioButton_rightdown.Text = Direction_fig[2];
+                }
+            }
+            else
+            {
+                if (SetStartingMember.teamA_pitcher[0].view_Donated_Pitch() == "L")
+                {
+                    Lefty = true;
+                    radioButton_leftdown.Text = Direction_fig[4];
+                    radioButton_rightdown.Text = Direction_fig[2];
+                }
+            }
 
             Write_Score.countup = false;
         }
@@ -237,6 +258,11 @@ namespace Baseball_Analysis
             {
                 view_comboBox_pitch(pitch_direction.left);
                 Direction_fig_id = 1;
+                if (Lefty)
+                {
+                    view_comboBox_pitch(pitch_direction.right);
+                    Direction_fig_id = 5;
+                }
             }
         }
         private void radioButton_leftdown_CheckedChanged(object sender, EventArgs e)
@@ -245,6 +271,11 @@ namespace Baseball_Analysis
             {
                 view_comboBox_pitch(pitch_direction.leftdown);
                 Direction_fig_id = 2;
+                if(Lefty)
+                {
+                    view_comboBox_pitch(pitch_direction.rightdown);
+                    Direction_fig_id = 4;
+                }
             }
         }
         private void radioButton_down_CheckedChanged(object sender, EventArgs e)
@@ -261,6 +292,11 @@ namespace Baseball_Analysis
             {
                 view_comboBox_pitch(pitch_direction.rightdown);
                 Direction_fig_id = 4;
+                if (Lefty)
+                {
+                    view_comboBox_pitch(pitch_direction.leftdown);
+                    Direction_fig_id = 2;
+                }
             }
         }
         private void radioButton_right_CheckedChanged(object sender, EventArgs e)
@@ -269,6 +305,11 @@ namespace Baseball_Analysis
             {
                 view_comboBox_pitch(pitch_direction.right);
                 Direction_fig_id = 5;
+                if (Lefty)
+                {
+                    view_comboBox_pitch(pitch_direction.left);
+                    Direction_fig_id = 1;
+                }
             }
         }
 
@@ -299,7 +340,7 @@ namespace Baseball_Analysis
 
             if(Write_Score.countup)
             {
-                Write_Score.RESULT = comboBox_result2.Text;
+                Write_Score.RESULT = comboBox_direction.Text + comboBox_result2.Text;
             }
         }        
 

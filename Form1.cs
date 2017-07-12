@@ -142,17 +142,21 @@ namespace Baseball_Analysis
                 string FilePath = filepath + "\\" + name + "_visualize.csv";
                 using (var sr = new System.IO.StreamWriter(@FilePath, true, System.Text.Encoding.GetEncoding("shift_jis")))
                 {
-                    sr.Write(opponent_team + "," + opponent_name + "," + result + ",");
+                    sr.Write(opponent_team + "," + opponent_name + "," + result + ",\n");
                     int tmp = 0;
+                    sr.Write(",-----,-----,-----,-----,-----\n");
                     while (tmp < data.Count())
                     {
+                        sr.Write("|,");
                         for (int i = 0; i < 5; i++)
-                        {
+                        { 
                             sr.Write(data[tmp] + ",");
                             tmp++;
                         }
+                        sr.Write("|,");
                         sr.Write("\n");
                     }
+                    sr.Write(",-----,-----,-----,-----,-----\n");
                 }
 
             }

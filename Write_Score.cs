@@ -21,7 +21,7 @@ namespace Baseball_Analysis
         public static bool countup = false;
         public static string RESULT = "";
 
-        private static bool attackA = true;
+        public static bool attackA = true;
 
         public Write_Score()
         {
@@ -225,8 +225,15 @@ namespace Baseball_Analysis
                     {
                         for (int j = 0; j < 5; j++)
                         {
-                            string fdsfs = dataGridView_cource_height[i, j].Value.ToString();
-                            A.Add(fdsfs);
+                            if (dataGridView_cource_height[i, j].Value == null)
+                            {
+                                A.Add("");
+                            }
+                            else
+                            {
+                                A.Add(dataGridView_cource_height[i, j].Value.ToString());
+                            }                          
+                           
                         }
                     }
                     SetStartingMember.teamA_mem[teamA_bat_num].file_output_visualize(
@@ -245,7 +252,14 @@ namespace Baseball_Analysis
                     {
                         for (int j = 0; j < 5; j++)
                         {
-                            B.Add(dataGridView_cource_height[i, j].Value.ToString());
+                            if (dataGridView_cource_height[i, j].Value == null)
+                            {
+                                B.Add("");
+                            }
+                            else
+                            {
+                                B.Add(dataGridView_cource_height[i, j].Value.ToString());
+                            }
                         }
                     }
                     SetStartingMember.teamB_mem[teamB_bat_num].file_output_visualize(
@@ -261,7 +275,16 @@ namespace Baseball_Analysis
                 countup = false;
                 RESULT = "";                
             }
+            for (int i = 0; i < 5; i++)
+            {
+                for (int j = 0; j < 5; j++)
+                {
+                    dataGridView_cource_height[i, j].Value = null;
+                }
+            }
+            listView_pitch_log.Items.Clear();
             view_label();
+            view_count();
         }
     
 
@@ -329,6 +352,7 @@ namespace Baseball_Analysis
                 label_name_teamB_add.Text = SetStartingMember.teamB_mem[teamB_bat_num].name;
                 label_name_teamA_add.Text = SetStartingMember.teamA_pitcher[0].name;
             }
+            label_result.Text = "Result";
         }
     }
 }

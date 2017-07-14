@@ -17,10 +17,10 @@ namespace Baseball_Analysis
         public static int pitch_batter = 0, pitch_all = 0;
         public static int teamA_bat_num = 0, teamB_bat_num = 0;
         public static int cource_height = 1;
-        public static string[] pitch_data = { "P(b)", "P(a)", "T", "S", "R", "C", "N" };
+        public static string[] pitch_data = { "P(b)", "P(a)", "T", "S", "R", "C", "Ru", "N" };
         public static bool countup = false;
         public static string RESULT = "";
-
+        public static bool R1 = false, R2 = false, R3 = false;
         public static bool attackA = true;
 
         public Write_Score()
@@ -60,6 +60,7 @@ namespace Baseball_Analysis
             listView_pitch_log.Columns.Add("Speed");
             listView_pitch_log.Columns.Add("Result");
             listView_pitch_log.Columns.Add("BSO");
+            listView_pitch_log.Columns.Add("Runner");
             listView_pitch_log.Columns.Add("CHnum");
 
             for (int i = 0; i < SetStartingMember.teamA_mem.Count; i++)
@@ -192,7 +193,7 @@ namespace Baseball_Analysis
         {
             if (listView_pitch_log.Items.Count != 0)
             {
-                string[] tmp = { "P(b)", "P(a)", "T", "S", "R", "C", "N" };
+                string[] tmp = { "P(b)", "P(a)", "T", "S", "R", "C", "Ru", "N" };
                 for (int i = 0; i < listView_pitch_log.Items.Count; i++)
                 {
                     ListViewItem TMP = listView_pitch_log.Items[i];
@@ -225,13 +226,13 @@ namespace Baseball_Analysis
                     {
                         for (int j = 0; j < 5; j++)
                         {
-                            if (dataGridView_cource_height[i, j].Value == null)
+                            if (dataGridView_cource_height[j, i].Value == null)
                             {
                                 A.Add("");
                             }
                             else
                             {
-                                A.Add(dataGridView_cource_height[i, j].Value.ToString());
+                                A.Add(dataGridView_cource_height[j, i].Value.ToString());
                             }                          
                            
                         }
@@ -252,13 +253,13 @@ namespace Baseball_Analysis
                     {
                         for (int j = 0; j < 5; j++)
                         {
-                            if (dataGridView_cource_height[i, j].Value == null)
+                            if (dataGridView_cource_height[j, i].Value == null)
                             {
                                 B.Add("");
                             }
                             else
                             {
-                                B.Add(dataGridView_cource_height[i, j].Value.ToString());
+                                B.Add(dataGridView_cource_height[j, i].Value.ToString());
                             }
                         }
                     }
@@ -283,10 +284,62 @@ namespace Baseball_Analysis
                 }
             }
             listView_pitch_log.Items.Clear();
+
+            if(countO == 3)
+            {
+                countO = 0;
+                if(attackA)
+                {
+                    attackA = false;
+                }
+                else
+                {
+                    attackA = true;
+                }
+            }
+            countS = 0;
+            countB = 0;
+            pitch_batter = 0;
+
             view_label();
             view_count();
         }
-    
+
+        private void checkBox_runner1_CheckedChanged(object sender, EventArgs e)
+        {
+            if(checkBox_runner1.Checked)
+            {
+                R1 = true;
+            }
+            else
+            {
+                R1 = false;
+            }
+        }
+
+        private void checkBox_runner2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox_runner2.Checked)
+            {
+                R2 = true;
+            }
+            else
+            {
+                R2 = false;
+            }
+        }
+
+        private void checkBox_runner3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox_runner3.Checked)
+            {
+                R3 = true;
+            }
+            else
+            {
+                R3 = false;
+            }
+        }
 
         private int return_courcenum(int i)
         {

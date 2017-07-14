@@ -25,6 +25,7 @@ namespace Baseball_Analysis
         private static int button_click_num = 0;
         private static int nB = 0, nS = 0, nO = 0;
         private static int tmp_O = 0, tmp_O2 = 0;
+        private static int runner_num = 0;
 
         private static string[] result1 = { "ボール", "見逃し", "空振り", "ファール", "凡打", 
             "犠牲", "安打・出塁", "未投球" };
@@ -80,9 +81,24 @@ namespace Baseball_Analysis
                     radioButton_rightdown.Text = Direction_fig[2];
                 }
             }
-            numericUpDown_outnum.Maximum = 3;
-            numericUpDown_outnum.Minimum = 0;
+
             Write_Score.countup = false;
+
+            if(Write_Score.R1)
+            {
+                checkBox_runner1.Checked = true;
+                runner_num++;
+            }
+            if (Write_Score.R2)
+            {
+                checkBox_runner2.Checked = true;
+                runner_num++;
+            }
+            if (Write_Score.R3)
+            {
+                checkBox_runner3.Checked = true;
+                runner_num++;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -268,7 +284,6 @@ namespace Baseball_Analysis
                 if (Lefty)
                 {
                     view_comboBox_pitch(pitch_direction.right);
-                    Direction_fig_id = 5;
                 }
             }
         }
@@ -281,7 +296,6 @@ namespace Baseball_Analysis
                 if(Lefty)
                 {
                     view_comboBox_pitch(pitch_direction.rightdown);
-                    Direction_fig_id = 4;
                 }
             }
         }
@@ -302,7 +316,6 @@ namespace Baseball_Analysis
                 if (Lefty)
                 {
                     view_comboBox_pitch(pitch_direction.leftdown);
-                    Direction_fig_id = 2;
                 }
             }
         }
@@ -315,7 +328,6 @@ namespace Baseball_Analysis
                 if (Lefty)
                 {
                     view_comboBox_pitch(pitch_direction.left);
-                    Direction_fig_id = 1;
                 }
             }
         }
@@ -346,7 +358,24 @@ namespace Baseball_Analysis
             }
             Write_Score.pitch_data[4] = comboBox_result1.Text;
             Write_Score.pitch_data[5] = nB.ToString() + "|" + nS.ToString() + "|" + nO.ToString();
-            Write_Score.pitch_data[6] = label_cource_height_P.Text;
+            Write_Score.pitch_data[6] = "";
+            if(checkBox_runner1.Checked)
+            {
+                Write_Score.pitch_data[6] += "1 ";
+            }
+            if(checkBox_runner2.Checked)
+            {
+                Write_Score.pitch_data[6] += "2 ";
+            }
+            if (checkBox_runner3.Checked)
+            {
+                Write_Score.pitch_data[6] += "3 ";
+            }
+            if(runner_num ==0)
+            {
+                Write_Score.pitch_data[6] = "-";
+            }
+            Write_Score.pitch_data[7] = label_cource_height_P.Text;
 
             Write_Score.cource_height = int.Parse(label_cource_height_P.Text);
 
@@ -354,14 +383,6 @@ namespace Baseball_Analysis
             {
                 Write_Score.RESULT = comboBox_direction.Text + comboBox_result2.Text;
             }
-        }
-
-        private void numericUpDown_outnum_ValueChanged(object sender, EventArgs e)
-        {
-            nO = tmp_O2;
-            int a = int.Parse(numericUpDown_outnum.Value.ToString());
-            nO += a;
-            view_BSO();
         }
 
         private void comboBox_result2_SelectedIndexChanged(object sender, EventArgs e)
@@ -377,7 +398,51 @@ namespace Baseball_Analysis
             }
             tmp_O2 = nO;
             view_BSO();
-            limited_other_out(nO);
+        }
+
+        private void checkBox_runner1_CheckedChanged(object sender, EventArgs e)
+        {
+            if(checkBox_runner1.Checked)
+            {
+                runner_num++;
+                nO--;
+            }
+            else
+            {
+                runner_num--;
+                nO++;
+            }
+            view_BSO();
+        }
+
+        private void checkBox_runner2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox_runner2.Checked)
+            {
+                runner_num++;
+                nO--;
+            }
+            else
+            {
+                runner_num--;
+                nO++;
+            }
+            view_BSO();
+        }
+
+        private void checkBox_runner3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox_runner3.Checked)
+            {
+                runner_num++;
+                nO--;
+            }
+            else
+            {
+                runner_num--;
+                nO++;
+            }
+            view_BSO();
         }
 
         private void comboBox_result1_SelectedIndexChanged(object sender, EventArgs e)
@@ -387,7 +452,6 @@ namespace Baseball_Analysis
             nO = Write_Score.countO;
             comboBox_direction.Enabled = true;
             comboBox_result2.Enabled = true;
-            numericUpDown_outnum.Enabled = false;
             Write_Score.countup = false;
 
             if (comboBox_result1.Text == "ボール")
@@ -403,6 +467,7 @@ namespace Baseball_Analysis
                     comboBox_result2.Text = "四球";
                     comboBox_result2.Items.Add("四球");
                     nB++;
+                    Write_Score.countup = true;
                 }
             }
             else if (comboBox_result1.Text == "見逃し" || comboBox_result1.Text == "空振り")
@@ -419,7 +484,7 @@ namespace Baseball_Analysis
                     comboBox_result2.Items.Add("三振");
                     nS++;
                     nO++;
-                    numericUpDown_outnum.Enabled = true;
+                    Write_Score.countup = true;
                 }
             }
             else if (comboBox_result1.Text == "ファール")
@@ -440,11 +505,10 @@ namespace Baseball_Analysis
                 {
                     comboBox_direction.Items.Add(direction[i]);
                 }
-                for(int i = 0; i < result2_bonda.Count() - Write_Score.countO; i++)
+                for(int i = 0; i < result2_bonda.Count(); i++)
                 {
                     comboBox_result2.Items.Add(result2_bonda[i]);
                 }
-                numericUpDown_outnum.Enabled = true;
                 Write_Score.countup = true;
             }
             else if (comboBox_result1.Text == "犠牲")
@@ -458,8 +522,6 @@ namespace Baseball_Analysis
                 }
                 comboBox_result2.Items.Add("バント");
                 comboBox_result2.Items.Add("フライ");
-
-                numericUpDown_outnum.Enabled = true;
                 Write_Score.countup = true;
             }
             else if (comboBox_result1.Text == "安打・出塁")
@@ -475,7 +537,6 @@ namespace Baseball_Analysis
                     comboBox_result2.Items.Add(result2_syuturui[i]);
                 }
 
-                numericUpDown_outnum.Enabled = true;
                 Write_Score.countup = true;
             }
             else
@@ -490,7 +551,6 @@ namespace Baseball_Analysis
             tmp_O = nO;
             tmp_O2 = nO;
             view_BSO();
-            limited_other_out(nO);
         }
 
         private void view_BSO()
@@ -500,10 +560,5 @@ namespace Baseball_Analysis
             label_out.Text = nO.ToString();
         }
 
-        private void limited_other_out(int O)
-        {
-            numericUpDown_outnum.Maximum = 3 - O;
-            numericUpDown_outnum.Minimum = 0;
-        }
     }
 }

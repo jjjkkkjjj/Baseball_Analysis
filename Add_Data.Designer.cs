@@ -60,9 +60,6 @@
             this.radioButton_down = new System.Windows.Forms.RadioButton();
             this.radioButton_rightdown = new System.Windows.Forms.RadioButton();
             this.comboBox_pitch = new System.Windows.Forms.ComboBox();
-            this.label_runner1 = new System.Windows.Forms.Label();
-            this.label_runner2 = new System.Windows.Forms.Label();
-            this.label_runner3 = new System.Windows.Forms.Label();
             this.label_cource_height_P = new System.Windows.Forms.Label();
             this.comboBox_result1 = new System.Windows.Forms.ComboBox();
             this.comboBox_result2 = new System.Windows.Forms.ComboBox();
@@ -74,15 +71,15 @@
             this.label_pitcher_ch = new System.Windows.Forms.Label();
             this.label_cource_height_C = new System.Windows.Forms.Label();
             this.comboBox_direction = new System.Windows.Forms.ComboBox();
-            this.numericUpDown_outnum = new System.Windows.Forms.NumericUpDown();
-            this.label_other_out = new System.Windows.Forms.Label();
             this.label_strike = new System.Windows.Forms.Label();
             this.label_out = new System.Windows.Forms.Label();
             this.label_ball = new System.Windows.Forms.Label();
             this.count_out = new System.Windows.Forms.Label();
             this.count_strike = new System.Windows.Forms.Label();
             this.count_ball = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_outnum)).BeginInit();
+            this.checkBox_runner3 = new System.Windows.Forms.CheckBox();
+            this.checkBox_runner2 = new System.Windows.Forms.CheckBox();
+            this.checkBox_runner1 = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // button25
@@ -442,33 +439,6 @@
             this.comboBox_pitch.Size = new System.Drawing.Size(121, 20);
             this.comboBox_pitch.TabIndex = 90;
             // 
-            // label_runner1
-            // 
-            this.label_runner1.AutoSize = true;
-            this.label_runner1.Location = new System.Drawing.Point(435, 80);
-            this.label_runner1.Name = "label_runner1";
-            this.label_runner1.Size = new System.Drawing.Size(47, 12);
-            this.label_runner1.TabIndex = 91;
-            this.label_runner1.Text = "runner 1";
-            // 
-            // label_runner2
-            // 
-            this.label_runner2.AutoSize = true;
-            this.label_runner2.Location = new System.Drawing.Point(377, 34);
-            this.label_runner2.Name = "label_runner2";
-            this.label_runner2.Size = new System.Drawing.Size(47, 12);
-            this.label_runner2.TabIndex = 92;
-            this.label_runner2.Text = "runner 2";
-            // 
-            // label_runner3
-            // 
-            this.label_runner3.AutoSize = true;
-            this.label_runner3.Location = new System.Drawing.Point(318, 80);
-            this.label_runner3.Name = "label_runner3";
-            this.label_runner3.Size = new System.Drawing.Size(47, 12);
-            this.label_runner3.TabIndex = 93;
-            this.label_runner3.Text = "runner 3";
-            // 
             // label_cource_height_P
             // 
             this.label_cource_height_P.AutoSize = true;
@@ -568,24 +538,6 @@
             this.comboBox_direction.Size = new System.Drawing.Size(58, 20);
             this.comboBox_direction.TabIndex = 104;
             // 
-            // numericUpDown_outnum
-            // 
-            this.numericUpDown_outnum.Enabled = false;
-            this.numericUpDown_outnum.Location = new System.Drawing.Point(222, 140);
-            this.numericUpDown_outnum.Name = "numericUpDown_outnum";
-            this.numericUpDown_outnum.Size = new System.Drawing.Size(31, 19);
-            this.numericUpDown_outnum.TabIndex = 105;
-            this.numericUpDown_outnum.ValueChanged += new System.EventHandler(this.numericUpDown_outnum_ValueChanged);
-            // 
-            // label_other_out
-            // 
-            this.label_other_out.AutoSize = true;
-            this.label_other_out.Location = new System.Drawing.Point(163, 142);
-            this.label_other_out.Name = "label_other_out";
-            this.label_other_out.Size = new System.Drawing.Size(53, 12);
-            this.label_other_out.TabIndex = 106;
-            this.label_other_out.Text = "Other out";
-            // 
             // label_strike
             // 
             this.label_strike.AutoSize = true;
@@ -640,19 +592,53 @@
             this.count_ball.TabIndex = 107;
             this.count_ball.Text = "B";
             // 
+            // checkBox_runner3
+            // 
+            this.checkBox_runner3.AutoSize = true;
+            this.checkBox_runner3.Location = new System.Drawing.Point(320, 83);
+            this.checkBox_runner3.Name = "checkBox_runner3";
+            this.checkBox_runner3.Size = new System.Drawing.Size(66, 16);
+            this.checkBox_runner3.TabIndex = 115;
+            this.checkBox_runner3.Text = "Runner3";
+            this.checkBox_runner3.UseVisualStyleBackColor = true;
+            this.checkBox_runner3.CheckedChanged += new System.EventHandler(this.checkBox_runner3_CheckedChanged);
+            // 
+            // checkBox_runner2
+            // 
+            this.checkBox_runner2.AutoSize = true;
+            this.checkBox_runner2.Location = new System.Drawing.Point(385, 43);
+            this.checkBox_runner2.Name = "checkBox_runner2";
+            this.checkBox_runner2.Size = new System.Drawing.Size(66, 16);
+            this.checkBox_runner2.TabIndex = 114;
+            this.checkBox_runner2.Text = "Runner2";
+            this.checkBox_runner2.UseVisualStyleBackColor = true;
+            this.checkBox_runner2.CheckedChanged += new System.EventHandler(this.checkBox_runner2_CheckedChanged);
+            // 
+            // checkBox_runner1
+            // 
+            this.checkBox_runner1.AutoSize = true;
+            this.checkBox_runner1.Location = new System.Drawing.Point(446, 83);
+            this.checkBox_runner1.Name = "checkBox_runner1";
+            this.checkBox_runner1.Size = new System.Drawing.Size(66, 16);
+            this.checkBox_runner1.TabIndex = 113;
+            this.checkBox_runner1.Text = "Runner1";
+            this.checkBox_runner1.UseVisualStyleBackColor = true;
+            this.checkBox_runner1.CheckedChanged += new System.EventHandler(this.checkBox_runner1_CheckedChanged);
+            // 
             // Add_Data
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(516, 305);
+            this.Controls.Add(this.checkBox_runner3);
+            this.Controls.Add(this.checkBox_runner2);
+            this.Controls.Add(this.checkBox_runner1);
             this.Controls.Add(this.label_strike);
             this.Controls.Add(this.label_out);
             this.Controls.Add(this.label_ball);
             this.Controls.Add(this.count_out);
             this.Controls.Add(this.count_strike);
             this.Controls.Add(this.count_ball);
-            this.Controls.Add(this.label_other_out);
-            this.Controls.Add(this.numericUpDown_outnum);
             this.Controls.Add(this.comboBox_direction);
             this.Controls.Add(this.label_cource_height_C);
             this.Controls.Add(this.label_pitcher_ch);
@@ -664,9 +650,6 @@
             this.Controls.Add(this.comboBox_result2);
             this.Controls.Add(this.comboBox_result1);
             this.Controls.Add(this.label_cource_height_P);
-            this.Controls.Add(this.label_runner3);
-            this.Controls.Add(this.label_runner2);
-            this.Controls.Add(this.label_runner1);
             this.Controls.Add(this.comboBox_pitch);
             this.Controls.Add(this.radioButton_rightdown);
             this.Controls.Add(this.radioButton_down);
@@ -701,7 +684,6 @@
             this.Controls.Add(this.button1);
             this.Name = "Add_Data";
             this.Text = "Add_Data";
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_outnum)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -741,9 +723,6 @@
         private System.Windows.Forms.RadioButton radioButton_down;
         private System.Windows.Forms.RadioButton radioButton_rightdown;
         private System.Windows.Forms.ComboBox comboBox_pitch;
-        private System.Windows.Forms.Label label_runner1;
-        private System.Windows.Forms.Label label_runner2;
-        private System.Windows.Forms.Label label_runner3;
         private System.Windows.Forms.Label label_cource_height_P;
         private System.Windows.Forms.ComboBox comboBox_result1;
         private System.Windows.Forms.ComboBox comboBox_result2;
@@ -755,13 +734,14 @@
         private System.Windows.Forms.Label label_pitcher_ch;
         private System.Windows.Forms.Label label_cource_height_C;
         private System.Windows.Forms.ComboBox comboBox_direction;
-        private System.Windows.Forms.NumericUpDown numericUpDown_outnum;
-        private System.Windows.Forms.Label label_other_out;
         private System.Windows.Forms.Label label_strike;
         private System.Windows.Forms.Label label_out;
         private System.Windows.Forms.Label label_ball;
         private System.Windows.Forms.Label count_out;
         private System.Windows.Forms.Label count_strike;
         private System.Windows.Forms.Label count_ball;
+        private System.Windows.Forms.CheckBox checkBox_runner3;
+        private System.Windows.Forms.CheckBox checkBox_runner2;
+        private System.Windows.Forms.CheckBox checkBox_runner1;
     }
 }

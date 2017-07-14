@@ -68,12 +68,15 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage_member = new System.Windows.Forms.TabPage();
             this.tabPage_add_pitchinfo = new System.Windows.Forms.TabPage();
-            this.dataGridView_cource_height = new System.Windows.Forms.DataGridView();
-            this.label_BorP_teamA_add = new System.Windows.Forms.Label();
-            this.label_name_teamA_add = new System.Windows.Forms.Label();
-            this.label_BorP_teamB_add = new System.Windows.Forms.Label();
             this.label_name_teamB_add = new System.Windows.Forms.Label();
+            this.label_BorP_teamB_add = new System.Windows.Forms.Label();
+            this.label_name_teamA_add = new System.Windows.Forms.Label();
+            this.label_BorP_teamA_add = new System.Windows.Forms.Label();
+            this.dataGridView_cource_height = new System.Windows.Forms.DataGridView();
             this.label_result = new System.Windows.Forms.Label();
+            this.checkBox_runner1 = new System.Windows.Forms.CheckBox();
+            this.checkBox_runner2 = new System.Windows.Forms.CheckBox();
+            this.checkBox_runner3 = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage_member.SuspendLayout();
             this.tabPage_add_pitchinfo.SuspendLayout();
@@ -378,7 +381,7 @@
             // 
             // button_add_Pinfo
             // 
-            this.button_add_Pinfo.Location = new System.Drawing.Point(92, 89);
+            this.button_add_Pinfo.Location = new System.Drawing.Point(92, 110);
             this.button_add_Pinfo.Name = "button_add_Pinfo";
             this.button_add_Pinfo.Size = new System.Drawing.Size(43, 23);
             this.button_add_Pinfo.TabIndex = 61;
@@ -388,7 +391,7 @@
             // 
             // button_delete_Pinfo
             // 
-            this.button_delete_Pinfo.Location = new System.Drawing.Point(433, 89);
+            this.button_delete_Pinfo.Location = new System.Drawing.Point(433, 110);
             this.button_delete_Pinfo.Name = "button_delete_Pinfo";
             this.button_delete_Pinfo.Size = new System.Drawing.Size(57, 23);
             this.button_delete_Pinfo.TabIndex = 62;
@@ -445,6 +448,9 @@
             // 
             // tabPage_add_pitchinfo
             // 
+            this.tabPage_add_pitchinfo.Controls.Add(this.checkBox_runner3);
+            this.tabPage_add_pitchinfo.Controls.Add(this.checkBox_runner2);
+            this.tabPage_add_pitchinfo.Controls.Add(this.checkBox_runner1);
             this.tabPage_add_pitchinfo.Controls.Add(this.label_name_teamB_add);
             this.tabPage_add_pitchinfo.Controls.Add(this.label_BorP_teamB_add);
             this.tabPage_add_pitchinfo.Controls.Add(this.label_name_teamA_add);
@@ -462,6 +468,42 @@
             this.tabPage_add_pitchinfo.Text = "Add Pitch info";
             this.tabPage_add_pitchinfo.UseVisualStyleBackColor = true;
             // 
+            // label_name_teamB_add
+            // 
+            this.label_name_teamB_add.AutoSize = true;
+            this.label_name_teamB_add.Location = new System.Drawing.Point(519, 82);
+            this.label_name_teamB_add.Name = "label_name_teamB_add";
+            this.label_name_teamB_add.Size = new System.Drawing.Size(32, 12);
+            this.label_name_teamB_add.TabIndex = 67;
+            this.label_name_teamB_add.Text = "name";
+            // 
+            // label_BorP_teamB_add
+            // 
+            this.label_BorP_teamB_add.AutoSize = true;
+            this.label_BorP_teamB_add.Location = new System.Drawing.Point(449, 82);
+            this.label_BorP_teamB_add.Name = "label_BorP_teamB_add";
+            this.label_BorP_teamB_add.Size = new System.Drawing.Size(41, 12);
+            this.label_BorP_teamB_add.TabIndex = 66;
+            this.label_BorP_teamB_add.Text = "Pitcher";
+            // 
+            // label_name_teamA_add
+            // 
+            this.label_name_teamA_add.AutoSize = true;
+            this.label_name_teamA_add.Location = new System.Drawing.Point(94, 82);
+            this.label_name_teamA_add.Name = "label_name_teamA_add";
+            this.label_name_teamA_add.Size = new System.Drawing.Size(32, 12);
+            this.label_name_teamA_add.TabIndex = 65;
+            this.label_name_teamA_add.Text = "name";
+            // 
+            // label_BorP_teamA_add
+            // 
+            this.label_BorP_teamA_add.AutoSize = true;
+            this.label_BorP_teamA_add.Location = new System.Drawing.Point(23, 82);
+            this.label_BorP_teamA_add.Name = "label_BorP_teamA_add";
+            this.label_BorP_teamA_add.Size = new System.Drawing.Size(37, 12);
+            this.label_BorP_teamA_add.TabIndex = 64;
+            this.label_BorP_teamA_add.Text = "Batter";
+            // 
             // dataGridView_cource_height
             // 
             this.dataGridView_cource_height.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -471,42 +513,6 @@
             this.dataGridView_cource_height.Size = new System.Drawing.Size(188, 142);
             this.dataGridView_cource_height.TabIndex = 63;
             // 
-            // label_BorP_teamA_add
-            // 
-            this.label_BorP_teamA_add.AutoSize = true;
-            this.label_BorP_teamA_add.Location = new System.Drawing.Point(23, 61);
-            this.label_BorP_teamA_add.Name = "label_BorP_teamA_add";
-            this.label_BorP_teamA_add.Size = new System.Drawing.Size(37, 12);
-            this.label_BorP_teamA_add.TabIndex = 64;
-            this.label_BorP_teamA_add.Text = "Batter";
-            // 
-            // label_name_teamA_add
-            // 
-            this.label_name_teamA_add.AutoSize = true;
-            this.label_name_teamA_add.Location = new System.Drawing.Point(94, 61);
-            this.label_name_teamA_add.Name = "label_name_teamA_add";
-            this.label_name_teamA_add.Size = new System.Drawing.Size(32, 12);
-            this.label_name_teamA_add.TabIndex = 65;
-            this.label_name_teamA_add.Text = "name";
-            // 
-            // label_BorP_teamB_add
-            // 
-            this.label_BorP_teamB_add.AutoSize = true;
-            this.label_BorP_teamB_add.Location = new System.Drawing.Point(449, 61);
-            this.label_BorP_teamB_add.Name = "label_BorP_teamB_add";
-            this.label_BorP_teamB_add.Size = new System.Drawing.Size(41, 12);
-            this.label_BorP_teamB_add.TabIndex = 66;
-            this.label_BorP_teamB_add.Text = "Pitcher";
-            // 
-            // label_name_teamB_add
-            // 
-            this.label_name_teamB_add.AutoSize = true;
-            this.label_name_teamB_add.Location = new System.Drawing.Point(519, 61);
-            this.label_name_teamB_add.Name = "label_name_teamB_add";
-            this.label_name_teamB_add.Size = new System.Drawing.Size(32, 12);
-            this.label_name_teamB_add.TabIndex = 67;
-            this.label_name_teamB_add.Text = "name";
-            // 
             // label_result
             // 
             this.label_result.AutoSize = true;
@@ -515,6 +521,39 @@
             this.label_result.Size = new System.Drawing.Size(38, 12);
             this.label_result.TabIndex = 66;
             this.label_result.Text = "Result";
+            // 
+            // checkBox_runner1
+            // 
+            this.checkBox_runner1.AutoSize = true;
+            this.checkBox_runner1.Location = new System.Drawing.Point(433, 7);
+            this.checkBox_runner1.Name = "checkBox_runner1";
+            this.checkBox_runner1.Size = new System.Drawing.Size(66, 16);
+            this.checkBox_runner1.TabIndex = 68;
+            this.checkBox_runner1.Text = "Runner1";
+            this.checkBox_runner1.UseVisualStyleBackColor = true;
+            this.checkBox_runner1.CheckedChanged += new System.EventHandler(this.checkBox_runner1_CheckedChanged);
+            // 
+            // checkBox_runner2
+            // 
+            this.checkBox_runner2.AutoSize = true;
+            this.checkBox_runner2.Location = new System.Drawing.Point(433, 24);
+            this.checkBox_runner2.Name = "checkBox_runner2";
+            this.checkBox_runner2.Size = new System.Drawing.Size(66, 16);
+            this.checkBox_runner2.TabIndex = 69;
+            this.checkBox_runner2.Text = "Runner2";
+            this.checkBox_runner2.UseVisualStyleBackColor = true;
+            this.checkBox_runner2.CheckedChanged += new System.EventHandler(this.checkBox_runner2_CheckedChanged);
+            // 
+            // checkBox_runner3
+            // 
+            this.checkBox_runner3.AutoSize = true;
+            this.checkBox_runner3.Location = new System.Drawing.Point(433, 42);
+            this.checkBox_runner3.Name = "checkBox_runner3";
+            this.checkBox_runner3.Size = new System.Drawing.Size(66, 16);
+            this.checkBox_runner3.TabIndex = 70;
+            this.checkBox_runner3.Text = "Runner3";
+            this.checkBox_runner3.UseVisualStyleBackColor = true;
+            this.checkBox_runner3.CheckedChanged += new System.EventHandler(this.checkBox_runner3_CheckedChanged);
             // 
             // Write_Score
             // 
@@ -607,5 +646,8 @@
         private System.Windows.Forms.Label label_name_teamA_add;
         private System.Windows.Forms.Label label_BorP_teamA_add;
         private System.Windows.Forms.Label label_result;
+        private System.Windows.Forms.CheckBox checkBox_runner3;
+        private System.Windows.Forms.CheckBox checkBox_runner2;
+        private System.Windows.Forms.CheckBox checkBox_runner1;
     }
 }

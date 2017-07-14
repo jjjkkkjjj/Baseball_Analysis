@@ -74,6 +74,15 @@
             this.label_pitcher_ch = new System.Windows.Forms.Label();
             this.label_cource_height_C = new System.Windows.Forms.Label();
             this.comboBox_direction = new System.Windows.Forms.ComboBox();
+            this.numericUpDown_outnum = new System.Windows.Forms.NumericUpDown();
+            this.label_other_out = new System.Windows.Forms.Label();
+            this.label_strike = new System.Windows.Forms.Label();
+            this.label_out = new System.Windows.Forms.Label();
+            this.label_ball = new System.Windows.Forms.Label();
+            this.count_out = new System.Windows.Forms.Label();
+            this.count_strike = new System.Windows.Forms.Label();
+            this.count_ball = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_outnum)).BeginInit();
             this.SuspendLayout();
             // 
             // button25
@@ -485,6 +494,7 @@
             this.comboBox_result2.Name = "comboBox_result2";
             this.comboBox_result2.Size = new System.Drawing.Size(58, 20);
             this.comboBox_result2.TabIndex = 96;
+            this.comboBox_result2.SelectedIndexChanged += new System.EventHandler(this.comboBox_result2_SelectedIndexChanged);
             // 
             // textBox_speed
             // 
@@ -558,11 +568,91 @@
             this.comboBox_direction.Size = new System.Drawing.Size(58, 20);
             this.comboBox_direction.TabIndex = 104;
             // 
+            // numericUpDown_outnum
+            // 
+            this.numericUpDown_outnum.Enabled = false;
+            this.numericUpDown_outnum.Location = new System.Drawing.Point(222, 140);
+            this.numericUpDown_outnum.Name = "numericUpDown_outnum";
+            this.numericUpDown_outnum.Size = new System.Drawing.Size(31, 19);
+            this.numericUpDown_outnum.TabIndex = 105;
+            this.numericUpDown_outnum.ValueChanged += new System.EventHandler(this.numericUpDown_outnum_ValueChanged);
+            // 
+            // label_other_out
+            // 
+            this.label_other_out.AutoSize = true;
+            this.label_other_out.Location = new System.Drawing.Point(163, 142);
+            this.label_other_out.Name = "label_other_out";
+            this.label_other_out.Size = new System.Drawing.Size(53, 12);
+            this.label_other_out.TabIndex = 106;
+            this.label_other_out.Text = "Other out";
+            // 
+            // label_strike
+            // 
+            this.label_strike.AutoSize = true;
+            this.label_strike.Location = new System.Drawing.Point(451, 161);
+            this.label_strike.Name = "label_strike";
+            this.label_strike.Size = new System.Drawing.Size(11, 12);
+            this.label_strike.TabIndex = 112;
+            this.label_strike.Text = "0";
+            // 
+            // label_out
+            // 
+            this.label_out.AutoSize = true;
+            this.label_out.Location = new System.Drawing.Point(451, 183);
+            this.label_out.Name = "label_out";
+            this.label_out.Size = new System.Drawing.Size(11, 12);
+            this.label_out.TabIndex = 111;
+            this.label_out.Text = "0";
+            // 
+            // label_ball
+            // 
+            this.label_ball.AutoSize = true;
+            this.label_ball.Location = new System.Drawing.Point(451, 139);
+            this.label_ball.Name = "label_ball";
+            this.label_ball.Size = new System.Drawing.Size(11, 12);
+            this.label_ball.TabIndex = 110;
+            this.label_ball.Text = "0";
+            // 
+            // count_out
+            // 
+            this.count_out.AutoSize = true;
+            this.count_out.Location = new System.Drawing.Point(431, 183);
+            this.count_out.Name = "count_out";
+            this.count_out.Size = new System.Drawing.Size(13, 12);
+            this.count_out.TabIndex = 109;
+            this.count_out.Text = "O";
+            // 
+            // count_strike
+            // 
+            this.count_strike.AutoSize = true;
+            this.count_strike.Location = new System.Drawing.Point(431, 161);
+            this.count_strike.Name = "count_strike";
+            this.count_strike.Size = new System.Drawing.Size(12, 12);
+            this.count_strike.TabIndex = 108;
+            this.count_strike.Text = "S";
+            // 
+            // count_ball
+            // 
+            this.count_ball.AutoSize = true;
+            this.count_ball.Location = new System.Drawing.Point(431, 139);
+            this.count_ball.Name = "count_ball";
+            this.count_ball.Size = new System.Drawing.Size(13, 12);
+            this.count_ball.TabIndex = 107;
+            this.count_ball.Text = "B";
+            // 
             // Add_Data
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(516, 305);
+            this.Controls.Add(this.label_strike);
+            this.Controls.Add(this.label_out);
+            this.Controls.Add(this.label_ball);
+            this.Controls.Add(this.count_out);
+            this.Controls.Add(this.count_strike);
+            this.Controls.Add(this.count_ball);
+            this.Controls.Add(this.label_other_out);
+            this.Controls.Add(this.numericUpDown_outnum);
             this.Controls.Add(this.comboBox_direction);
             this.Controls.Add(this.label_cource_height_C);
             this.Controls.Add(this.label_pitcher_ch);
@@ -611,6 +701,7 @@
             this.Controls.Add(this.button1);
             this.Name = "Add_Data";
             this.Text = "Add_Data";
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_outnum)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -664,5 +755,13 @@
         private System.Windows.Forms.Label label_pitcher_ch;
         private System.Windows.Forms.Label label_cource_height_C;
         private System.Windows.Forms.ComboBox comboBox_direction;
+        private System.Windows.Forms.NumericUpDown numericUpDown_outnum;
+        private System.Windows.Forms.Label label_other_out;
+        private System.Windows.Forms.Label label_strike;
+        private System.Windows.Forms.Label label_out;
+        private System.Windows.Forms.Label label_ball;
+        private System.Windows.Forms.Label count_out;
+        private System.Windows.Forms.Label count_strike;
+        private System.Windows.Forms.Label count_ball;
     }
 }

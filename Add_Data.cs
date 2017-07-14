@@ -24,13 +24,15 @@ namespace Baseball_Analysis
         }
         private static int button_click_num = 0;
         private static int nB = 0, nS = 0, nO = 0;
+        private static int tmp_O = 0, tmp_O2 = 0;
 
         private static string[] result1 = { "ボール", "見逃し", "空振り", "ファール", "凡打", 
             "犠牲", "安打・出塁", "未投球" };
         private static string[] direction = { "投", "捕", "一", "二", "三", "遊", "左", "中", "右" };
-        private static string[] result2_bonda = { "ゴロ", "フライ", "ライナー", "ファールフライ" };
+        private static string[] result2_bonda = { "ゴロ", "フライ", "ライナー", "ファールフライ", "ゴロW", "ゴロT"};
         private static string[] result2_syuturui = { "ヒット", "2ベース", "3ベース", "HR", "エラー",
             "死球", "Fc", "ELSE"};
+        private static string[] result2_mitokyu = { "牽制死" };
 
         private static string[] Straight = { "ストレート", "2シーム" };
         private static string[] Left_ = { "シュート" };
@@ -56,7 +58,11 @@ namespace Baseball_Analysis
             nS = Write_Score.countS;
             nO = Write_Score.countO;
 
-            if(Write_Score.attackA)
+            label_ball.Text = nB.ToString();
+            label_strike.Text = nS.ToString();
+            label_out.Text = nO.ToString();
+
+            if (Write_Score.attackA)
             {
                if( SetStartingMember.teamB_pitcher[0].view_Donated_Pitch() == "L")
                 {
@@ -74,7 +80,8 @@ namespace Baseball_Analysis
                     radioButton_rightdown.Text = Direction_fig[2];
                 }
             }
-
+            numericUpDown_outnum.Maximum = 3;
+            numericUpDown_outnum.Minimum = 0;
             Write_Score.countup = false;
         }
 
@@ -320,6 +327,11 @@ namespace Baseball_Analysis
             Write_Score.countO = nO;
             Write_Score.pitch_all++;
             Write_Score.pitch_batter++;
+            if(comboBox_result1.Text == "未投球")
+            {
+                Write_Score.pitch_all--;
+                Write_Score.pitch_batter--;
+            }
 
             Write_Score.pitch_data[0] = Direction_fig[Direction_fig_id] + Write_Score.pitch_batter.ToString();
             Write_Score.pitch_data[1] = Write_Score.pitch_all.ToString();
@@ -342,7 +354,31 @@ namespace Baseball_Analysis
             {
                 Write_Score.RESULT = comboBox_direction.Text + comboBox_result2.Text;
             }
-        }        
+        }
+
+        private void numericUpDown_outnum_ValueChanged(object sender, EventArgs e)
+        {
+            nO = tmp_O2;
+            int a = int.Parse(numericUpDown_outnum.Value.ToString());
+            nO += a;
+            view_BSO();
+        }
+
+        private void comboBox_result2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            nO = tmp_O;
+            if(comboBox_result2.Text == "ゴロW")
+            {
+                nO++;
+            }
+            else if(comboBox_result2.Text == "ゴロT")
+            {
+                nO += 2;
+            }
+            tmp_O2 = nO;
+            view_BSO();
+            limited_other_out(nO);
+        }
 
         private void comboBox_result1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -351,14 +387,15 @@ namespace Baseball_Analysis
             nO = Write_Score.countO;
             comboBox_direction.Enabled = true;
             comboBox_result2.Enabled = true;
+            numericUpDown_outnum.Enabled = false;
             Write_Score.countup = false;
 
             if (comboBox_result1.Text == "ボール")
             {
+                comboBox_direction.Enabled = false;
                 if (nB != 3)
                 {
                     nB++;
-                    comboBox_direction.Enabled = false;
                     comboBox_result2.Enabled = false;
                 }
                 else
@@ -370,10 +407,10 @@ namespace Baseball_Analysis
             }
             else if (comboBox_result1.Text == "見逃し" || comboBox_result1.Text == "空振り")
             {
+                comboBox_direction.Enabled = false;
                 if (nS != 2)
                 {
                     nS++;
-                    comboBox_direction.Enabled = false;
                     comboBox_result2.Enabled = false;
                 }
                 else
@@ -382,6 +419,7 @@ namespace Baseball_Analysis
                     comboBox_result2.Items.Add("三振");
                     nS++;
                     nO++;
+                    numericUpDown_outnum.Enabled = true;
                 }
             }
             else if (comboBox_result1.Text == "ファール")
@@ -402,11 +440,11 @@ namespace Baseball_Analysis
                 {
                     comboBox_direction.Items.Add(direction[i]);
                 }
-                for(int i = 0; i < result2_bonda.Count(); i++)
+                for(int i = 0; i < result2_bonda.Count() - Write_Score.countO; i++)
                 {
                     comboBox_result2.Items.Add(result2_bonda[i]);
                 }
-
+                numericUpDown_outnum.Enabled = true;
                 Write_Score.countup = true;
             }
             else if (comboBox_result1.Text == "犠牲")
@@ -421,6 +459,7 @@ namespace Baseball_Analysis
                 comboBox_result2.Items.Add("バント");
                 comboBox_result2.Items.Add("フライ");
 
+                numericUpDown_outnum.Enabled = true;
                 Write_Score.countup = true;
             }
             else if (comboBox_result1.Text == "安打・出塁")
@@ -436,8 +475,35 @@ namespace Baseball_Analysis
                     comboBox_result2.Items.Add(result2_syuturui[i]);
                 }
 
+                numericUpDown_outnum.Enabled = true;
                 Write_Score.countup = true;
             }
+            else
+            {
+                comboBox_direction.Items.Clear();
+                comboBox_result2.Items.Clear();
+                for (int i = 0; i < result2_mitokyu.Count(); i++)
+                {
+                    comboBox_result2.Items.Add(result2_mitokyu[i]);
+                }
+            }
+            tmp_O = nO;
+            tmp_O2 = nO;
+            view_BSO();
+            limited_other_out(nO);
+        }
+
+        private void view_BSO()
+        {
+            label_ball.Text = nB.ToString();
+            label_strike.Text = nS.ToString();
+            label_out.Text = nO.ToString();
+        }
+
+        private void limited_other_out(int O)
+        {
+            numericUpDown_outnum.Maximum = 3 - O;
+            numericUpDown_outnum.Minimum = 0;
         }
     }
 }
